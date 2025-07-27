@@ -237,7 +237,7 @@ function showSlides() {
     }
     if(slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";
     if(dots[slideIndex-1]) dots[slideIndex-1].className += " active";
-    slideTimeout = setTimeout(showSlides, 6000); // Change image every 6 seconds
+    slideTimeout = setTimeout(showSlides, 30000); // Change image every 30 seconds
 }
 
 function currentSlide(n) {
