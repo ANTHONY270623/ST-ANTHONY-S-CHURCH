@@ -1,0 +1,310 @@
+/* Additional responsive styles for improved mobile and tablet experience */
+
+/* General improvements for all screen sizes */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Improved tablet styles (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* General spacing adjustments */
+    .section {
+        padding: 5rem 2rem 3rem;
+    }
+    
+    /* Improved grid layouts */
+    .forms-grid, 
+    .gallery-grid, 
+    .council-grid, 
+    .priest-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    /* Enhanced card styles */
+    .form-card, 
+    .council-card, 
+    .priest-card {
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-card:hover, 
+    .council-card:hover, 
+    .priest-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    
+    /* Better navigation for tablets */
+    .nav-menu {
+        margin-left: 0;
+        padding-left: 0;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .nav-link {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+    
+    /* Improved font sizes */
+    p, li, input, textarea {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* Better form layout */
+    .contact-form {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    /* Improved hero section */
+    .hero-content {
+        padding: 0 1.5rem;
+    }
+    
+    /* Adjusted social sidebar */
+    .social-sidebar {
+        right: 10px;
+        left: auto;
+    }
+    
+    /* Improved ticker spacing */
+    .ticker-content {
+        padding: 0.8rem 0;
+    }
+}
+
+/* Enhanced Mobile styles (up to 767px) */
+@media (max-width: 767px) {
+    /* Navigation bar adjustments for mobile */
+    .nav-container {
+        padding: 0 1rem; /* Reset padding on mobile */
+        justify-content: space-between; /* Space between logo and hamburger */
+    }
+    
+    .logo {
+        width: auto; /* Reset width for mobile */
+        margin-right: 0; /* Reset margin for mobile */
+        flex-shrink: 0;
+        max-width: 30px; /* Limit logo size on mobile */
+    }
+    
+    .hamburger {
+        margin-left: auto; /* Push hamburger to the far right */
+    }
+    
+    /* Dropdown menu adjustments for mobile */
+    .dropdown-content {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0,0,0,0.2);
+        margin: 0;
+        padding-left: 15px;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: none; /* Don't show on hover for mobile */
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block; /* Show only when .active class is applied */
+    }
+    
+    .dropdown-content a {
+        padding: 10px 20px;
+    }
+    
+    /* General spacing and size adjustments */
+    .section {
+        padding: 4rem 1rem 2rem;
+    }
+    
+    /* Improved readability and text hierarchy */
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    p, li {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    /* Better card layouts */
+    .forms-grid, 
+    .gallery-grid, 
+    .priest-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.2rem;
+    }
+    
+    /* Enhanced form styles */
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    input, 
+    textarea {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    /* Better button tap targets */
+    button, 
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        min-height: 44px; /* Minimum size for tap targets */
+    }
+    
+    /* More accessible navigation */
+    .nav-menu li {
+        width: 100%;
+    }
+    
+    .nav-link {
+        width: 100%;
+        display: block;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    /* Social links easier to tap */
+    .social-links a {
+        margin: 0 8px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .social-links i {
+        font-size: 1.2rem;
+    }
+    
+    /* Improved hero section */
+    .hero-content {
+        padding: 0 1rem;
+        width: 90%;
+    }
+    
+    /* Adjusted slideshow for better mobile experience */
+    .slideshow-container {
+        height: 60vh;
+    }
+    
+    /* Better spacing for images in priest and council cards */
+    .priest-image, 
+    .council-image {
+        margin: 0 auto 1rem;
+    }
+    
+    /* Improved footer and contact section */
+    .contact-content > div {
+        padding: 1.5rem;
+    }
+    
+    /* Better dark mode toggle position */
+    .dark-mode-toggle {
+        top: 80px;
+        right: 15px;
+    }
+}
+
+/* Small mobile devices (up to 480px) */
+@media (max-width: 480px) {
+    /* Adjusted grid for better small screen display */
+    .forms-grid, 
+    .gallery-grid, 
+    .council-grid, 
+    .priest-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Larger tap targets */
+    .nav-link, 
+    button, 
+    .btn-primary, 
+    input, 
+    .social-links a {
+        min-height: 48px;
+    }
+    
+    /* Better form layout */
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    /* Improved touch targets and spacing */
+    .council-card, 
+    .priest-card, 
+    .form-card {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Enhanced spacing */
+    .section {
+        padding: 3.5rem 0.8rem 2rem;
+    }
+    
+    /* Better card shadows for distinction */
+    .council-card, 
+    .priest-card, 
+    .form-card {
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Slideshow adjustments for small screens */
+    .slideshow-container {
+        height: 50vh;
+    }
+    
+    .hero-content {
+        width: 95%;
+    }
+    
+    /* Better dot navigation on slideshow */
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+    }
+}
+
+/* Landscape orientation fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+    .slideshow-container {
+        height: 100vh;
+    }
+    
+    .hero-content {
+        top: 45%;
+    }
+    
+    .nav-menu.active {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .nav-link {
+        padding: 0.7rem;
+    }
+}

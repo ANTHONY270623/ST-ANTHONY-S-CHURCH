@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Member Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+    function generateUniqueId() {
+        // Simple unique ID: 'M' + timestamp + random 3 digits
+        return 'M' + Date.now() + Math.floor(Math.random()*900+100);
+    }
+    window.onload = function() {
+        document.getElementById('uniqueId').value = generateUniqueId();
+    };
+    </script>
+</head>
+<body>
+    <div class="section">
+        <h2>New Member Registration</h2>
+        <form class="login-card">
+            <div class="form-group">
+                <label>Membership ID</label>
+                <input type="text" id="uniqueId" name="uniqueId" readonly>
+            </div>
+            <div class="form-group">
+                <input type="text" name="areaName" placeholder="Area Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="familyHead" placeholder="Family Head Name" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="familyCount" placeholder="Family Members Count" min="1" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="New Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <div class="form-group" style="display:flex;align-items:center;">
+                <input type="checkbox" id="terms" required style="width:auto;margin-right:8px;">
+                <label for="terms" style="margin:0;">I agree to the terms and conditions</label>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

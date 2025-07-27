@@ -1,0 +1,6 @@
+/* Threads icon color fix for sidebar and contact section */
+.sidebar-link.threads { background: #000; color: #fff !important; }
+.sidebar-link.threads:hover { color: gold !important; }
+/* Make the Threads icon in the contact section match other social media icons */
+.social-links a[title="Threads"] { color: var(--primary-color) !important; }
+.social-links a[title="Threads"]:hover { color: var(--secondary-color) !important; }

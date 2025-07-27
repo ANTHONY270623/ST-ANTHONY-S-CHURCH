@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Smith - St. Anthony's Church</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        .admin-profile {
+            max-width: 1000px;
+            margin: 120px auto 50px;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .admin-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .admin-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .admin-details h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .admin-details p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .detail-section {
+            margin: 2rem 0;
+        }
+        
+        .detail-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .admin-profile {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+                margin: 100px auto 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Home Link -->
+    <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    
+    <div class="admin-profile">
+        <div class="admin-image">
+            <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Jane Smith">
+        </div>
+        
+        <div class="admin-details">
+            <h1>Jane Smith</h1>
+            <p><strong>Position:</strong> Parish Council Vice President</p>
+            
+            <div class="detail-section">
+                <h2>Personal Information</h2>
+                <p><strong>Joined Council:</strong> March 2021</p>
+                <p><strong>Parish Member Since:</strong> 2008</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> janesmith@example.com</p>
+                <p><strong>Phone:</strong> +91 97654 32109</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Responsibilities</h2>
+                <p>As the Vice President of the Parish Council, Jane assists the President in administrative duties and takes the lead in several key areas:</p>
+                <ul style="margin-left: 1.5rem; line-height: 1.6;">
+                    <li>Heading the parish outreach committee</li>
+                    <li>Organizing the annual charity drive</li>
+                    <li>Coordinating with local community services</li>
+                    <li>Filling in for the President when needed</li>
+                </ul>
+            </div>
+            
+            <div class="detail-section">
+                <h2>About Jane</h2>
+                <p>Jane has been deeply involved with St. Anthony's Church community outreach programs for over a decade. Her background in social work has been invaluable in developing relationships between the church and local community organizations.</p>
+                <p>She has been instrumental in establishing the parish's food bank program which now serves over 50 families weekly. Under her leadership, the annual charity fundraiser has doubled its contributions over the past three years.</p>
+                <p>Jane is also involved in the church choir and leads the women's Bible study group every Tuesday evening.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

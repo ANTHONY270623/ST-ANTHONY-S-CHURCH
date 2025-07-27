@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fr. Sebastain - St. Anthony's Church</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        .admin-profile {
+            max-width: 1000px;
+            margin: 120px auto 50px;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .admin-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .admin-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .admin-details h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .admin-details p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .detail-section {
+            margin: 2rem 0;
+        }
+        
+        .detail-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .admin-profile {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+                margin: 100px auto 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Home Link -->
+    <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    
+    <div class="admin-profile">
+        <div class="admin-image">
+            <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Fr. Sebastain">
+        </div>
+        
+        <div class="admin-details">
+            <h1>Fr. Sebastain Vadakkekattezhathu</h1>
+            <p><strong>Position:</strong> Vicar, St. Anthony's Church Green Park</p>
+            
+            <div class="detail-section">
+                <h2>Personal Information</h2>
+                <p><strong>Birthday:</strong> 28-07-1958</p>
+                <p><strong>Home Parish:</strong> Kothavara</p>
+                <p><strong>Ordained on:</strong> 26-12-1987</p>
+                <p><strong>Feast:</strong> September 21</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> sebastianconv@gmail.com</p>
+                <p><strong>Phone:</strong> +91 94944 72539</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Current & Former Appointments</h2>
+                <p>St. Anthony's Church Green Park – Vicar (Current)</p>
+                <p>Prior appointments include leadership roles within the Order of Friars Minor Conventuals.</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>About Fr. Sebastain</h2>
+                <p>Fr. Sebastain joined the Order of Friars Minor Conventuals and has served faithfully in various parishes throughout his career. He brings a wealth of pastoral experience and spiritual guidance to the St. Anthony's Church community.</p>
+                <p>Under his leadership, the parish has grown and developed various community outreach programs.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

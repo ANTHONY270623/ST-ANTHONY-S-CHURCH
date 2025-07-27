@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#8b0000">
+    <title>St. Anthony's Church Green Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <!-- Floating Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.facebook.com/share/19cjbzWyGW/" class="sidebar-link facebook" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@stanthonyschurchgreenpark?feature=shared" class="sidebar-link youtube" title="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/stanthonyschurch_greenpark?igsh=cjNhcGR3ZGthZjdv" class="sidebar-link instagram" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="sidebar-link twitter" title="X" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.threads.com/@stanthonyschurch_greenpark" class="sidebar-link threads" title="Threads" target="_blank"><i class="fab fa-threads"></i></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="" alt="">
+                
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> HOME</a></li>
+                <li><a href="#more-about" class="nav-link"><i class="fas fa-info-circle"></i> MORE ABOUT</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-church"></i> ABOUT</a></li>
+                <li><a href="#parish" class="nav-link"><i class="fas fa-users"></i> PARISH ADMIN</a></li>
+                <li><a href="#prayer" class="nav-link"><i class="fas fa-pray"></i> PRAYER TIMES</a></li>
+                <li><a href="#updates" class="nav-link"><i class="fas fa-bullhorn"></i> UPDATES</a></li>
+                <li><a href="#events" class="nav-link"><i class="fas fa-calendar-alt"></i> UPCOMING EVENTS</a></li>
+                <li><a href="#gallery" class="nav-link"><i class="fas fa-images"></i> GALLERY</a></li>
+                <li><a href="#council" class="nav-link"><i class="fas fa-user-friends"></i> COUNCIL MEMBER</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> CONTACT</a></li>
+                <li class="dropdown">
+                    <a href="#login" class="nav-link"><i class="fas fa-sign-in-alt"></i> LOGIN/REGISTRATION <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="member-login.html"><i class="fas fa-user"></i> Members Login</a>
+                        <a href="admin-login.html"><i class="fas fa-user-shield"></i> Admin Login</a>
+                        <a href="new-member-registration.html"><i class="fas fa-user-plus"></i> New Member Registration</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#forms" class="nav-link"><i class="fas fa-download"></i> DOWNLOAD FORMS <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#baptism-form"><i class="fas fa-baby"></i> Baptism Form</a>
+                        <a href="#communion-form"><i class="fas fa-bread-slice"></i> Communion Form</a>
+                        <a href="#confirmation-form"><i class="fas fa-dove"></i> Confirmation Form</a>
+                        <a href="#marriage-form"><i class="fas fa-ring"></i> Marriage Form</a>
+                        <a href="#burial-form"><i class="fas fa-cross"></i> Burial Form</a>
+                        <a href="#family-form"><i class="fas fa-users"></i> Family Details Form</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Ticker (shown only on mobile) -->
+    <div class="mobile-ticker">
+        UPDATE: ON 27th JULY 2025 (SUNDAY) MASS WILL BE ON NEW CHAPEL.
+        UPDATE: FR SEBASTAIN WIL BE NOT AVAILABLE FOR ONE WEEK
+        UPDATE: HOUSE BLESSINGS ARE GOING ON PLEASE CONTACT COUNCIL MEMBERS.
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/d1WrT40t/church-home-page.jpg" alt="church-home-page">
+            </div>
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="church-photo-2">
+            </div>
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/rF7GJnND/Whats-App-Image-2025-07-06-at-15-05-45-cc76c86f.jpg" alt="church-photo-3">
+            </div>
+            <!-- Dots -->
+            <div style="text-align:center;position:absolute;bottom:20px;width:100%;z-index:3;">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>ST ANTHONY'S CHURCH</h1>
+            <h2>GREENPARK</h2>
+            <a href="#more-about" class="btn-primary">MORE ABOUT</a>
+        </div>
+        <div class="home-ticker">
+            <div class="ticker-content">
+                UPDATE: ON 27th JULY 2025 (SUNDAY) MASS WILL BE ON NEW CHAPEL. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                UPDATE: FR SEBASTAIN WIL BE NOT AVAILABLE FOR ONE WEEK. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                UPDATE: HOUSE BLESSINGS ARE GOING ON PLEASE CONTACT COUNCIL MEMBERS.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+    </section>
+
+    <!-- More About Section -->
+    <section id="more-about" class="section">
+        <h2>MORE ABOUT</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <i class="fas fa-church" style="font-size: 3rem;"></i>
+                <p>Church Image Placeholder</p>
+            </div>
+            <div class="about-text">
+                <p>St. Anthony's Church Green Park was established on 13-06-2017.</p>
+                <p>Our patron is St. Anthony of Padua.</p>
+                <p><strong>Address:</strong> Chittaranjan Para, New Barrackpore, Kolkata, West Bengal 700133</p>
+                <p><strong>Email:</strong> greenparkchurch25@gmail.com</p>
+                <p><strong>Telephone:</strong> 7025727541</p>
+                <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">PATRON SAINT AND FEASTS</h3>
+                <p><strong>Patron saint:</strong> St. Anthony</p>
+                <p><strong>Main Feast of the Parish:</strong> Mother Mary Immaculate</p>
+                <p><strong>Main Feast Date:</strong> 12 June</p>
+                <p><strong>Other Feast Date:</strong> 15, Joseph 18 March</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>ABOUT</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <i class="fas fa-home" style="font-size: 3rem;"></i>
+                <p>About Image Placeholder</p>
+            </div>
+            <div class="about-text">
+                <p>Jeevalaya Family Park is a venture of FACE (Family Apostolate Centre Ernakulam) under the Archdiocese of Ernakulam –Angamaly for the welfare of family relationships. Jeevalaya, which means house of life, is intended to be a place where families refresh their relationships with the help of spiritual and psychological support of experts. Officially the park has been dedicated to families on 4th November 2012 by Mar Sebastian Adayanthrath, Auxiliary Bishop of Ernakualm-Angamaly.</p>
+                <p>Served by a group of experts Jeevalaya promotes a family experience. Situated on the bank of river Periyar, Jeevalaya provides a serene atmosphere to refresh family relationships. Being furnished with bath attached and clean double rooms, Jeevalaya guarantees comfortable stay.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parish Administration Section -->
+    <section id="parish" class="section">
+        <h2>PARISH ADMINISTRATION</h2>
+        <div class="priest-grid">
+            <div class="priest-card" onclick="window.location.href='fr-sebastian.html';" style="cursor: pointer;">
+                <div class="priest-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Fr. Sebastian" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h3>Fr. Sebastain Vadakkekattezhathu OFM CONVENTUAL</h3>
+                <p>Vicar</p>
+                <p><small>Click to view details</small></p>
+            </div>
+            <div class="priest-card" onclick="window.location.href='fr-sijo.html';" style="cursor: pointer;">
+                <div class="priest-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Fr. Sijo" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h3>Fr. Sijo Nadakkan OFM CONVENTUAL</h3>
+                <p>Assistant Vicar</p>
+                <p><small>Click to view details</small></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Times Section -->
+    <section id="prayer" class="section">
+        <h2>PRAYER TIMES</h2>
+        <div style="text-align: center; font-size: 1.2rem; line-height: 2;">
+            <h3 style="color: var(--primary-color); margin-bottom: 2rem;">SUNDAY</h3>
+            <p><strong>ROSARY:</strong> 7:00 AM</p>
+            <p><strong>HOLY MASS:</strong> 7:30 AM</p>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section id="updates" class="section">
+        <h2>UPDATES</h2>
+        <div class="updates-ticker">
+            <div class="ticker-content">
+                UPDATE:  ON 27th JULY 2025 (SUNDAY) MASS WILL BE ON NEW CHAPEL.
+                UPDATE:  HOUSE BLESSINGS ARE GOING ON PLEASE CONTACT COUNCIL MEMBERS.
+                UPDATE:  FR SEBASTAIN WIL BE NOT AVAILABLE FOR ONE WEEK.
+            </div>
+        </div>
+        <div style="text-align: center; padding: 2rem; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border-color);">
+            <p style="font-size: 1.1rem;">ON 27th JULY 2025 (SUNDAY) MASS WILL BE ON NEW CHAPEL.</p>
+            <p style="font-size: 1.1rem;">HOUSE BLESSINGS ARE GOING ON PLEASE CONTACT COUNCIL MEMBERS.</p>
+            <p style="font-size: 1.1rem;"> FR SEBASTAIN WIL BE NOT AVAILABLE FOR ONE WEEK.</p>
+        </div>
+    </section>
+    
+    <!-- Upcoming Events Section -->
+    <section id="events" class="section">
+        <h2>UPCOMING EVENTS</h2>
+        <div class="forms-grid">
+            <div class="form-card">
+                <div class="form-icon"><i class="fas fa-calendar-alt"></i></div>
+                <h3>St. Anthony's Feast</h3>
+                <p>August 15, 2025</p>
+                <p>Special mass and community celebration</p>
+            </div>
+            <div class="form-card">
+                <div class="form-icon"><i class="fas fa-music"></i></div>
+                <h3>Church Choir Competition</h3>
+                <p>September 3, 2025</p>
+                <p>Parish hall at 4:00 PM</p>
+            </div>
+            <div class="form-card">
+                <div class="form-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3>Charity Drive</h3>
+                <p>September 10, 2025</p>
+                <p>Donations for local orphanage</p>
+            </div>
+            <div class="form-card">
+                <div class="form-icon"><i class="fas fa-bible"></i></div>
+                <h3>Bible Study Group</h3>
+                <p>Every Wednesday</p>
+                <p>6:00 PM at Parish Hall</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2>CHURCH GALLERY</h2>
+        <div class="gallery-section">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">ST ANTHONY'S FEAST DAY PHOTOS</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                   
+                   <img src="https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544830289-5a5b9a7fcfb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                </div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">EASTER SUNDAY IMAGES</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                </div>
+            </div>
+        </div>
+        <div class="gallery-section">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">GOOD FRIDAY IMAGES</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Council Members Section -->
+    <section id="council" class="section">
+        <h2>COUNCIL MEMBERS</h2>
+        <div class="council-grid">
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="John Doe" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>John Doe</h4>
+                <p class="council-position">President</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='jane-smith.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Jane Smith" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>Jane Smith</h4>
+                <p class="council-position">Vice President</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Robert Johnson" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>Robert Johnson</h4>
+                <p class="council-position">Secretary</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Mary Williams" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>Mary Williams</h4>
+                <p class="council-position">Treasurer</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Michael Brown" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>Michael Brown</h4>
+                <p class="council-position">Member</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Sarah Davis" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>Sarah Davis</h4>
+                <p class="council-position">Member</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="David Wilson" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>David Wilson</h4>
+                <p class="council-position">Member</p>
+                <p><small>Click for details</small></p>
+            </div>
+            <div class="council-card" onclick="window.location.href='council-member.html';" style="cursor: pointer;">
+                <div class="council-image">
+                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Lisa Moore" style="width: 100%; height: auto; border-radius: 50%;">
+                </div>
+                <h4>Lisa Moore</h4>
+                <p class="council-position">Member</p>
+                <p><small>Click for details</small></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>CONTACT US</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Church Contact Details</h3>
+                <p><strong>Address:</strong> Chitranjan Para, New Barrackpore, Kolkata, West Bengal 700133</p>
+                <p><strong>Phone:</strong> 7025727541</p>
+                <p><strong>Email:</strong> greenparkchurch25@gmail.com</p>
+                <h3 style="margin-top: 2rem;">Follow Us on Social Media</h3>
+                <div class="social-links">
+                    <a href="https://youtube.com/@stanthonyschurchgreenpark?feature=shared" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/19cjbzWyGW/" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/stanthonyschurch_greenpark?igsh=cjNhcGR3ZGthZjdv" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.threads.com/@stanthonyschurch_greenpark" title="Threads"><i class="fab fa-threads"></i></a>
+                </div>
+                <!-- Google Maps Embed -->
+                <div style="margin-top:2rem;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.532236708989!2d88.44381179999999!3d22.6712225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89fba70e48603%3A0x7f03c4dd174fb41e!2sSt.Francis%20Friary%2C%20Order%20Of%20Friars%20Minor%20Conventuals!5e0!3m2!1sen!2sin!4v1753107733452!5m2!1sen!2sin" width="100%" height="350" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login/Register Section -->
+    <section id="login" class="section">
+        <h2>LOGIN/REGISTRATION</h2>
+        <div class="login-container" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; max-width: 400px; margin: 0 auto;">
+            <a href="member-login.html" class="btn-primary" style="width: 100%; text-align: center;">Members Login</a>
+            <a href="admin-login.html" class="btn-primary" style="width: 100%; text-align: center;">Admin Login</a>
+            <a href="new-member-registration.html" class="btn-primary" style="width: 100%; text-align: center;">New Member Registration</a>
+        </div>
+    </section>
+
+    <!-- Download Forms Section -->
+    <section id="forms" class="section">
+        <h2>DOWNLOAD FORM</h2>
+        <div class="forms-grid">
+            <div class="form-card" id="baptism-form">
+                <div class="form-icon"><i class="fas fa-baby"></i></div>
+                <h3>Baptism Form</h3>
+                <p>Download baptism certificate form</p>
+            </div>
+            <div class="form-card" id="communion-form">
+                <div class="form-icon"><i class="fas fa-bread-slice"></i></div>
+                <h3>First Holy Communion</h3>
+                <p>Download communion form</p>
+            </div>
+            <div class="form-card" id="confirmation-form">
+                <div class="form-icon"><i class="fas fa-dove"></i></div>
+                <h3>Confirmation Form</h3>
+                <p>Download confirmation form</p>
+            </div>
+            <div class="form-card" id="marriage-form">
+                <div class="form-icon"><i class="fas fa-ring"></i></div>
+                <h3>Marriage Form</h3>
+                <p>Download marriage certificate form</p>
+            </div>
+            <div class="form-card" id="burial-form">
+                <div class="form-icon"><i class="fas fa-cross"></i></div>
+                <h3>Burial Form</h3>
+                <p>Download burial certificate form</p>
+            </div>
+            <div class="form-card" id="family-form">
+                <div class="form-icon"><i class="fas fa-users"></i></div>
+                <h3>Family Details Form</h3>
+                <p>Download family registration form</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

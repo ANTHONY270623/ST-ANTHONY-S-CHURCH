@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#8b0000">
+    <title>Member Login - St. Anthony's Church Green Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-color);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .login-header {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        
+        .login-header i {
+            margin-right: 0.5rem;
+            font-size: 2rem;
+            vertical-align: middle;
+        }
+        
+        .login-subtext {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .success-message {
+            text-align: center;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-btn-container {
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border-radius: 8px;
+            border: 1.5px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+            outline: none;
+        }
+        
+        .form-group input::placeholder {
+            opacity: 0.6;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            min-width: 140px;
+            text-align: center;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .forgot-password-link {
+            text-align: right;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .forgot-password-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            align-items: center;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 0.5rem;
+        }
+        
+        /* Forgot Password Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .otp-inputs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .otp-input {
+            width: 3rem !important;
+            height: 3rem;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+        
+        .timer {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .resend-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+        
+        .resend-btn:disabled {
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            text-decoration: none;
+        }
+        
+        .back-btn {
+            color: var(--text-color);
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .back-btn::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .back-btn:hover::before {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="" alt="">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> HOME</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Member Login Section -->
+    <section class="section">
+        <h2>MEMBERS LOGIN</h2>
+        <div class="login-container">
+            <h3 class="login-header"><i class="fas fa-user-circle"></i> Welcome Back</h3>
+            <p class="login-subtext">Please log in with your credentials to access your account.</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Membership ID</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your membership ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="forgot-password-link">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+                <div class="login-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <a href="index.html" class="btn-primary back-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            
+            <!-- Step 1: Mobile Number Input -->
+            <div class="form-step active" id="step1">
+                <h3><i class="fas fa-mobile-alt"></i> Forgot Password</h3>
+                <p>Please enter the mobile number associated with your account. We will send a verification code to this number.</p>
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number" required>
+                </div>
+                <div class="btn-container">
+                    <button type="button" class="btn-primary back-btn" id="cancelStep1">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button type="button" class="btn-primary" id="sendOtpBtn">
+                        <i class="fas fa-paper-plane"></i> Send OTP
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: OTP Verification -->
+            <div class="form-step" id="step2">
+                <h3><i class="fas fa-key"></i> Verify OTP</h3>
+                <p>We've sent a verification code to your mobile number. Please enter the code below.</p>
+                
+                <div class="otp-inputs">
+                    <input type="text" class="otp-input" maxlength="1" autofocus>
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                </div>
+                
+                <div class="timer">
+                    Resend OTP in <span id="countdown">60</span> seconds
+                </div>
+                
+                <div class="form-group text-center">
+                    <button type="button" class="resend-btn" id="resendOtpBtn" disabled>Resend OTP</button>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="button" class="btn-primary back-btn" id="backToMobileBtn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button type="button" class="btn-primary" id="verifyOtpBtn">
+                        <i class="fas fa-check-circle"></i> Verify OTP
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Set New Password -->
+            <div class="form-step" id="step3">
+                <h3><i class="fas fa-lock"></i> Set New Password</h3>
+                <p>Please create a new password for your account.</p>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" required>
+                </div>
+                <div class="btn-container">
+                    <button type="button" class="btn-primary back-btn" id="backToOtpBtn">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button type="button" class="btn-primary" id="resetPasswordBtn">
+                        <i class="fas fa-key"></i> Reset Password
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Success -->
+            <div class="form-step" id="step4">
+                <div class="success-message">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h3>Password Reset Successful</h3>
+                    <p>Your password has been reset successfully. You can now log in with your new password.</p>
+                    <div class="btn-container success-btn-container">
+                        <button type="button" class="btn-primary" id="backToLoginBtn">
+                            <i class="fas fa-sign-in-alt"></i> Back to Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation and mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+            
+            // Login form submission
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Handle login logic here
+                    alert('Login functionality would be implemented here');
+                });
+            }
+            
+            // Forgot Password Modal
+            const modal = document.getElementById('forgotPasswordModal');
+            const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+            const closeModal = document.getElementById('closeModal');
+            const cancelStep1 = document.getElementById('cancelStep1');
+            
+            // Open modal
+            if (forgotPasswordLink) {
+                forgotPasswordLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                });
+            }
+            
+            // Close modal
+            if (closeModal) {
+                closeModal.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    resetModalSteps();
+                });
+            }
+            
+            // Cancel button
+            if (cancelStep1) {
+                cancelStep1.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    resetModalSteps();
+                });
+            }
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    resetModalSteps();
+                }
+            });
+            
+            function resetModalSteps() {
+                // Reset all steps and show step 1
+                const steps = document.querySelectorAll('.form-step');
+                steps.forEach(step => step.classList.remove('active'));
+                document.getElementById('step1').classList.add('active');
+                
+                // Clear inputs
+                document.getElementById('mobileNumber').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+                
+                const otpInputs = document.querySelectorAll('.otp-input');
+                otpInputs.forEach(input => {
+                    input.value = '';
+                });
+                
+                // Clear countdown
+                clearInterval(countdownInterval);
+            }
+            
+            // Forgot Password Steps Functionality
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            const step4 = document.getElementById('step4');
+            
+            const sendOtpBtn = document.getElementById('sendOtpBtn');
+            const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+            const resetPasswordBtn = document.getElementById('resetPasswordBtn');
+            const backToMobileBtn = document.getElementById('backToMobileBtn');
+            const backToOtpBtn = document.getElementById('backToOtpBtn');
+            const backToLoginBtn = document.getElementById('backToLoginBtn');
+            const resendOtpBtn = document.getElementById('resendOtpBtn');
+            
+            // OTP input fields behavior
+            const otpInputs = document.querySelectorAll('.otp-input');
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('keyup', (e) => {
+                    // Only accept numeric input
+                    input.value = input.value.replace(/[^0-9]/g, '');
+                    
+                    // Move to next input field if current field is filled
+                    if (input.value.length === 1 && index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                    
+                    // Handle backspace key
+                    if (e.key === 'Backspace' && index > 0 && input.value.length === 0) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+            });
+            
+            // Timer functionality
+            let countdownInterval;
+            function startCountdown() {
+                let seconds = 60;
+                const countdownEl = document.getElementById('countdown');
+                
+                countdownInterval = setInterval(() => {
+                    seconds--;
+                    countdownEl.textContent = seconds;
+                    
+                    if (seconds <= 0) {
+                        clearInterval(countdownInterval);
+                        resendOtpBtn.disabled = false;
+                    }
+                }, 1000);
+            }
+            
+            // Step 1 to Step 2: Send OTP
+            if (sendOtpBtn) {
+                sendOtpBtn.addEventListener('click', function() {
+                    const mobileNumber = document.getElementById('mobileNumber').value;
+                    if (!mobileNumber || mobileNumber.length < 10) {
+                        alert('Please enter a valid mobile number');
+                        return;
+                    }
+                    
+                    // Here you would normally make an API call to send the OTP
+                    // For demonstration, we'll just show the OTP screen
+                    step1.classList.remove('active');
+                    step2.classList.add('active');
+                    
+                    // Start countdown for OTP resend
+                    startCountdown();
+                    otpInputs[0].focus(); // Focus on first OTP input
+                });
+            }
+            
+            // Step 2 to Step 3: Verify OTP
+            if (verifyOtpBtn) {
+                verifyOtpBtn.addEventListener('click', function() {
+                    let otp = '';
+                    let isComplete = true;
+                    
+                    // Collect OTP from input fields
+                    otpInputs.forEach(input => {
+                        if (!input.value) {
+                            isComplete = false;
+                        }
+                        otp += input.value;
+                    });
+                    
+                    if (!isComplete) {
+                        alert('Please enter the complete OTP');
+                        return;
+                    }
+                    
+                    // Here you would normally verify the OTP with your API
+                    // For demonstration, we'll just move to the next step
+                    step2.classList.remove('active');
+                    step3.classList.add('active');
+                    
+                    // Clear the countdown timer
+                    clearInterval(countdownInterval);
+                });
+            }
+            
+            // Step 3 to Step 4: Reset Password
+            if (resetPasswordBtn) {
+                resetPasswordBtn.addEventListener('click', function() {
+                    const newPassword = document.getElementById('newPassword').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    
+                    if (!newPassword || newPassword.length < 6) {
+                        alert('Password must be at least 6 characters long');
+                        return;
+                    }
+                    
+                    if (newPassword !== confirmPassword) {
+                        alert('Passwords do not match');
+                        return;
+                    }
+                    
+                    // Here you would normally make an API call to reset the password
+                    // For demonstration, we'll just show the success screen
+                    step3.classList.remove('active');
+                    step4.classList.add('active');
+                });
+            }
+            
+            // Back buttons
+            if (backToMobileBtn) {
+                backToMobileBtn.addEventListener('click', function() {
+                    step2.classList.remove('active');
+                    step1.classList.add('active');
+                    
+                    // Clear the countdown timer
+                    clearInterval(countdownInterval);
+                });
+            }
+            
+            if (backToOtpBtn) {
+                backToOtpBtn.addEventListener('click', function() {
+                    step3.classList.remove('active');
+                    step2.classList.add('active');
+                    
+                    // Restart countdown
+                    startCountdown();
+                });
+            }
+            
+            if (backToLoginBtn) {
+                backToLoginBtn.addEventListener('click', function() {
+                    // Close the modal and reset
+                    modal.style.display = 'none';
+                    resetModalSteps();
+                });
+            }
+            
+            // Resend OTP button
+            if (resendOtpBtn) {
+                resendOtpBtn.addEventListener('click', function() {
+                    if (!resendOtpBtn.disabled) {
+                        // Here you would normally make an API call to resend the OTP
+                        alert('OTP has been resent to your mobile number');
+                        
+                        // Reset OTP input fields
+                        otpInputs.forEach(input => {
+                            input.value = '';
+                        });
+                        otpInputs[0].focus();
+                        
+                        // Restart countdown and disable button
+                        resendOtpBtn.disabled = true;
+                        document.getElementById('countdown').textContent = '60';
+                        startCountdown();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
