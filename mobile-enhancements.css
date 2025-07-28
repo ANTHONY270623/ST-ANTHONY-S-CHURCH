@@ -1,6 +1,35 @@
 /* Mobile Enhancements CSS */
 /* This file contains additional improvements for mobile experience */
 
+/* Nested dropdown styles */
+.nested-dropdown {
+    position: relative;
+    display: block;
+}
+
+.nested-dropdown-content {
+    display: none;
+    background-color: var(--card-bg);
+    padding-left: 20px;
+}
+
+.nested-dropdown:hover .nested-dropdown-content,
+.nested-dropdown:focus-within .nested-dropdown-content,
+.nested-dropdown:active .nested-dropdown-content {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .nested-dropdown-content {
+        position: relative;
+        left: 15px;
+        width: auto;
+        box-shadow: none;
+        padding-left: 15px;
+        border-left: 2px solid var(--primary-color);
+    }
+}
+
 /* Better touch interactions */
 @media (max-width: 767px) {
     /* Enhanced buttons for mobile */

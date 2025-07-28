@@ -54,7 +54,27 @@ hamburger.addEventListener('click', () => {
 // Dropdown menu functionality - enhanced for both mobile and desktop
 document.addEventListener('DOMContentLoaded', () => {
     const dropdowns = document.querySelectorAll('.dropdown');
+    const nestedDropdowns = document.querySelectorAll('.nested-dropdown');
     const dropdownStates = new Map(); // Track open state of each dropdown
+    
+    // Initialize nested dropdowns
+    nestedDropdowns.forEach((nestedDropdown) => {
+        const nestedLink = nestedDropdown.querySelector('a');
+        const nestedContent = nestedDropdown.querySelector('.nested-dropdown-content');
+        
+        if (window.innerWidth <= 767) {
+            nestedLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (nestedContent.style.display === 'block') {
+                    nestedContent.style.display = 'none';
+                } else {
+                    nestedContent.style.display = 'block';
+                }
+            });
+        }
+    });
     
     // Initialize each dropdown
     dropdowns.forEach((dropdown, index) => {
@@ -237,7 +257,7 @@ function showSlides() {
     }
     if(slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";
     if(dots[slideIndex-1]) dots[slideIndex-1].className += " active";
-    slideTimeout = setTimeout(showSlides, 30000); // Change image every 30 seconds
+    slideTimeout = setTimeout(showSlides, 25000); // Change image every 25 seconds
 }
 
 function currentSlide(n) {
