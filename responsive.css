@@ -1,17 +1,32 @@
-/* Additional responsive styles for improved mobile and tablet experience */
+/* Enhanced responsive styles for improved mobile and desktop experience */
 
 /* General improvements for all screen sizes */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%; /* Prevent font size adjustment on orientation change */
+    text-size-adjust: 100%;
 }
 
 body {
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 img {
     max-width: 100%;
     height: auto;
+    display: block; /* Prevent layout shifts */
+}
+
+/* Base improvements for responsive elements */
+input, textarea, select, button {
+    font-size: 16px; /* Prevent zoom on focus in iOS */
+    max-width: 100%;
+}
+
+a, button {
+    touch-action: manipulation; /* Improves touch response */
 }
 
 /* Improved tablet styles (768px - 1024px) */
@@ -93,17 +108,67 @@ img {
     .nav-container {
         padding: 0 1rem; /* Reset padding on mobile */
         justify-content: space-between; /* Space between logo and hamburger */
+        height: 60px; /* Fixed height for better mobile experience */
     }
     
     .logo {
         width: auto; /* Reset width for mobile */
         margin-right: 0; /* Reset margin for mobile */
         flex-shrink: 0;
-        max-width: 30px; /* Limit logo size on mobile */
+        max-width: 100px; /* Allow for larger logo on mobile */
     }
     
     .hamburger {
         margin-left: auto; /* Push hamburger to the far right */
+        width: 30px; /* Larger tap target */
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        cursor: pointer;
+        z-index: 1000; /* Ensure it's above the nav menu */
+    }
+    
+    /* Improved hamburger bars */
+    .hamburger .bar {
+        height: 3px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    /* Active hamburger animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+    
+    /* Mobile menu improvements */
+    .nav-menu {
+        position: fixed;
+        top: 60px; /* Match nav-container height */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: var(--nav-bg);
+        overflow-y: auto; /* Enable scrolling for long menus */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateY(-100%);
+        opacity: 0;
+        z-index: 990;
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
     }
     
     /* Dropdown menu adjustments for mobile */
@@ -115,6 +180,9 @@ img {
         background-color: rgba(0,0,0,0.2);
         margin: 0;
         padding-left: 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
     }
     
     .dropdown:hover .dropdown-content {
@@ -123,10 +191,16 @@ img {
     
     .dropdown.active .dropdown-content {
         display: block; /* Show only when .active class is applied */
+        max-height: 1000px; /* Large enough to contain all content */
     }
     
     .dropdown-content a {
-        padding: 10px 20px;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .dropdown-content a:last-child {
+        border-bottom: none;
     }
     
     /* General spacing and size adjustments */
@@ -203,11 +277,46 @@ img {
     .hero-content {
         padding: 0 1rem;
         width: 90%;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-content .btn-primary {
+        display: inline-block;
+        width: auto;
+        min-width: 180px;
     }
     
     /* Adjusted slideshow for better mobile experience */
     .slideshow-container {
         height: 60vh;
+    }
+    
+    .slide {
+        height: 60vh;
+    }
+    
+    .slide img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    
+    /* Better ticker display on mobile */
+    .mobile-ticker,
+    .home-ticker {
+        padding: 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
     
     /* Better spacing for images in priest and council cards */
@@ -238,6 +347,26 @@ img {
         grid-template-columns: 1fr;
     }
     
+    /* Improved section headers */
+    .section h2 {
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 1.8rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+    }
+    
+    .section h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--primary-color);
+    }
+    
     /* Larger tap targets */
     .nav-link, 
     button, 
@@ -252,29 +381,63 @@ img {
         margin-bottom: 1.2rem;
     }
     
+    input, textarea {
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        padding: 12px;
+        width: 100%;
+        font-size: 16px; /* Prevent iOS zoom */
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
     /* Improved touch targets and spacing */
     .council-card, 
     .priest-card, 
     .form-card {
-        padding: 1.2rem;
-        margin-bottom: 1rem;
+        padding: 1.5rem;
+        margin-bottom: 1.2rem;
+        border-radius: 12px;
+        transition: transform 0.2s ease;
     }
     
-    /* Enhanced spacing */
+    .council-card:active, 
+    .priest-card:active, 
+    .form-card:active {
+        transform: scale(0.98);
+    }
+    
+    /* Enhanced spacing and layout */
     .section {
-        padding: 3.5rem 0.8rem 2rem;
+        padding: 4rem 1.2rem 2.5rem;
     }
     
-    /* Better card shadows for distinction */
+    /* Better card shadows and styling */
     .council-card, 
     .priest-card, 
     .form-card {
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        border: 1px solid var(--border-color);
+        text-align: center;
+    }
+    
+    /* Improved images in cards */
+    .council-image img, 
+    .priest-image img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        object-fit: cover;
+        border: 3px solid var(--primary-color);
     }
     
     /* Slideshow adjustments for small screens */
     .slideshow-container {
         height: 50vh;
+    }
+    
+    .slide img {
+        object-position: center 25%; /* Better positioning of subjects */
     }
     
     .hero-content {
@@ -286,6 +449,75 @@ img {
         height: 10px;
         width: 10px;
         margin: 0 5px;
+        border-radius: 50%;
+        border: 1px solid white;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+    
+    /* Improved contact section */
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .contact-info, 
+    .contact-form {
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    /* Better iframe for maps */
+    iframe {
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Social sidebar adjustment */
+    .social-sidebar {
+        flex-direction: row;
+        left: 0;
+        top: auto;
+        bottom: 20px;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+    }
+    
+    .social-sidebar .sidebar-link {
+        margin: 0 10px;
+    }
+}
+
+/* Better tickers on mobile */
+@media (max-width: 767px) {
+    .mobile-ticker {
+        display: block;
+        padding: 10px 15px;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+    }
+    
+    .home-ticker {
+        position: relative;
+        bottom: 0;
+        padding: 8px 0;
+    }
+    
+    .ticker-content {
+        animation: ticker-scroll 40s linear infinite;
+    }
+    
+    @keyframes ticker-scroll {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-150%);
+        }
     }
 }
 
@@ -302,9 +534,48 @@ img {
     .nav-menu.active {
         max-height: 80vh;
         overflow-y: auto;
+        padding-bottom: 80px; /* Give space at bottom for scrolling */
     }
     
     .nav-link {
         padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Adjust sections for landscape */
+    .section {
+        padding: 3rem 1.5rem 2rem;
+    }
+    
+    /* Better card layout in landscape */
+    .forms-grid, 
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+/* Print styles - for better printed version */
+@media print {
+    .navbar, 
+    .social-sidebar, 
+    .dark-mode-toggle, 
+    .btn-primary, 
+    .hamburger {
+        display: none !important;
+    }
+    
+    body {
+        color: #000;
+        background: #fff;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+        padding: 1rem 0;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
     }
 }

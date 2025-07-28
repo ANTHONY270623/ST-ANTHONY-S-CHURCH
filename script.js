@@ -422,6 +422,22 @@ function initGalleryLightbox() {
 
 // Initialize - create stars and show slideshow
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle preloader
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Hide preloader after page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                preloader.classList.add('loaded');
+            }, 500);
+        });
+        
+        // Fallback to hide preloader after 3 seconds even if images are still loading
+        setTimeout(function() {
+            preloader.classList.add('loaded');
+        }, 3000);
+    }
+    
     createStars();
     showSlides();
     
@@ -430,6 +446,52 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize gallery lightbox
     initGalleryLightbox();
+    
+    // Add "click" event listeners for mobile interactions
+    // This creates a slight delay on touch devices to improve interactions
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.priest-card, .council-card, .form-card').forEach(function(card) {
+            card.addEventListener('touchstart', function() {
+                this.classList.add('touched');
+            });
+            
+            card.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.classList.remove('touched');
+                }, 150);
+            });
+        });
+        
+        // Improve mobile scroll experience
+        let touchstartY = 0;
+        let touchendY = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchstartY = e.changedTouches[0].screenY;
+        }, {passive: true});
+        
+        document.addEventListener('touchend', function(e) {
+            touchendY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, {passive: true});
+        
+        function handleSwipe() {
+            // Detect large swipes for better scrolling experience
+            if (touchendY < touchstartY && touchstartY - touchendY > 100) {
+                // Swipe up - scroll down
+                window.scrollBy({
+                    top: 100,
+                    behavior: 'smooth'
+                });
+            } else if (touchendY > touchstartY && touchendY - touchstartY > 100) {
+                // Swipe down - scroll up
+                window.scrollBy({
+                    top: -100,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
 });
 
 // Security features are now configured to allow right-click functionality

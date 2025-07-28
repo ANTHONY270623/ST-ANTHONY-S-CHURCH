@@ -1,0 +1,182 @@
+/* Mobile Enhancements CSS */
+/* This file contains additional improvements for mobile experience */
+
+/* Better touch interactions */
+@media (max-width: 767px) {
+    /* Enhanced buttons for mobile */
+    .btn-primary {
+        padding: 0.9rem 1.8rem;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        display: block;
+        font-size: 1rem;
+        border-radius: 50px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-primary::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255,255,255,0.5);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%, -50%);
+        transform-origin: 50% 50%;
+    }
+    
+    .btn-primary:active::after {
+        animation: ripple 0.6s ease-out;
+    }
+    
+    @keyframes ripple {
+        0% {
+            transform: scale(0, 0);
+            opacity: 0.5;
+        }
+        100% {
+            transform: scale(30, 30);
+            opacity: 0;
+        }
+    }
+    
+    /* Form improvements for mobile */
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+    
+    input, textarea, select {
+        padding: 15px;
+        border-radius: 8px;
+        width: 100%;
+        border: 2px solid var(--border-color);
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.2);
+    }
+    
+    /* Better form validation feedback */
+    input:valid, textarea:valid, select:valid {
+        border-color: #4caf50;
+    }
+    
+    input:invalid:not(:placeholder-shown), 
+    textarea:invalid:not(:placeholder-shown), 
+    select:invalid:not(:empty) {
+        border-color: #f44336;
+    }
+    
+    /* Card enhancements */
+    .priest-card, .council-card, .form-card {
+        transform-style: preserve-3d;
+        transition: all 0.3s ease;
+    }
+    
+    .priest-card:active, .council-card:active, .form-card:active {
+        transform: scale(0.98) translateY(3px);
+    }
+    
+    /* Enhanced hover states for cards */
+    .priest-card::before, 
+    .council-card::before, 
+    .form-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    
+    .priest-card:active::before, 
+    .council-card:active::before, 
+    .form-card:active::before {
+        opacity: 1;
+    }
+    
+    /* Mobile navigation enhancements */
+    .nav-menu {
+        padding-bottom: 100px; /* Extra space for scrolling */
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-link i {
+        margin-right: 15px;
+        min-width: 24px;
+        text-align: center;
+    }
+    
+    /* Gallery improvements */
+    .gallery-item {
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .gallery-item img {
+        transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:active img {
+        transform: scale(1.05);
+    }
+}
+
+/* Loading animation for initial page load */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--border-color);
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
