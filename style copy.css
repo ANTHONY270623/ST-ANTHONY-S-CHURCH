@@ -1,15 +1,7 @@
 :root {
     --primary-color: #8B4513;
     --secondary-color: #ffd700;
-    --text-color: #333;
-    --bg-color: #fff;
-    --card-bg: #fff;
-    --nav-bg: rgba(0, 0, 0, 0.9);
-    --section-bg: #f9f9f9;
-    --border-color: #eee;
-}
-
-.nav-container {
+    --text-color: #33;.nav-container {
     max-width: 1300px;
     margin: 0 auto;
     display: flex;
@@ -18,6 +10,11 @@
     padding: 0 1vw;
     gap: 0.5rem;
     position: relative; /* Ensure proper positioning context for the hamburger menu */
+}-color: #fff;
+    --card-bg: #fff;
+    --nav-bg: rgba(0, 0, 0, 0.9);
+    --section-bg: #f9f9f9;
+    --border-color: #eee;
 }
 
 .dark-mode {
@@ -112,8 +109,7 @@ body {
     padding: 1rem 0;
     z-index: 1000;
     transition: all 0.3s ease;
-    height: 76px;
-    -webkit-backdrop-filter: blur(10px);
+    height: 70px;
     backdrop-filter: blur(10px);
 }
 
@@ -163,18 +159,18 @@ body {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    padding: 0.4rem 0.55rem; /* Increased padding for better tap/visibility */
+    padding: 0.3rem 0.4rem; /* Slightly increased horizontal padding */
     border-radius: 5px;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0.3rem; /* Slightly larger gap between icon and text */
-    font-size: 0.85rem; /* Increased font size for better visibility */
+    gap: 0.2rem; /* Increased gap between icon and text */
+    font-size: 0.75rem;
     white-space: nowrap;
 }
 
 .nav-link i {
-    font-size: 1rem; /* Slightly larger icons */
+    font-size: 0.9rem;
 }
 
 .nav-link:hover {
@@ -270,7 +266,6 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    min-height: 650px; /* Slightly lower min to avoid small screens forcing layout issues */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -301,15 +296,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.2); /* Reduced darkness to show more of the background */
+    background: rgba(0,0,0,0.3);
 }
 
 .slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Always cover the viewport */
-    object-position: center; /* Center the image */
-    transform: scale(1.03); /* Slightly scale up to avoid potential edges during transitions */
+    height: 100vh;
+    object-fit: cover;
 }
 
 .fade {
@@ -336,28 +329,16 @@ body {
     background-color: var(--secondary-color);
 }
 
-.hero-content-bottom {
-    position: absolute;
-    bottom: 80px;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    text-align: center;
-}
-
 .hero-content {
     z-index: 2;
+    pointer-events: none;
     max-width: 800px;
     padding: 2rem;
     position: absolute;
-    bottom: 120px;
+    top: 50%; /* Positioned at the middle of the screen */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     text-align: center;
-}
-
-.hero-content .btn-primary {
-    pointer-events: auto;
 }
 
 .hero-content * {
@@ -416,73 +397,6 @@ body {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255,237,78,0.6);
     background: linear-gradient(45deg, #ffed4e, var(--secondary-color));
-}
-
-/* Inline theme toggle under login buttons */
-.theme-toggle-inline {
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-}
-
-.theme-toggle-label {
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-#darkModeSwitch {
-    appearance: none;
-    width: 48px;
-    height: 26px;
-    background: #ccc;
-    border-radius: 999px;
-    position: relative;
-    outline: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-#darkModeSwitch:checked {
-    background: var(--primary-color);
-}
-
-#darkModeSwitch::after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 50%;
-    transition: transform 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-}
-
-#darkModeSwitch:checked::after {
-    transform: translateX(22px);
-}
-
-/* Utility styles for inline form layout on registration page */
-.form-inline {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.checkbox-inline {
-    width: auto;
-    margin-right: 8px;
-}
-
-.label-inline {
-    margin: 0;
-}
-
-.btn-block {
-    width: 100%;
 }
 
 /* Home Ticker */
@@ -939,39 +853,6 @@ body {
     border-radius: 50%;
     pointer-events: none;
     z-index: -1;
-}
-
-/* Contact form status messages */
-#form-status {
-    margin-top: 15px;
-    padding: 10px;
-}
-
-#form-status .success-message {
-    color: #2e7d32;
-    background-color: #e8f5e9;
-    border-left: 4px solid #2e7d32;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-}
-
-#form-status .error-message {
-    color: #c62828;
-    background-color: #ffebee;
-    border-left: 4px solid #c62828;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-}
-
-#form-status .info-message {
-    color: #0277bd;
-    background-color: #e1f5fe;
-    border-left: 4px solid #0277bd;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 15px;
 }
 
 /* Responsive Design */

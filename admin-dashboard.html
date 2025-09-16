@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | St. Anthony's Church Green Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+    <style>
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .admin-title { display: flex; align-items: center; gap: .75rem; font-weight: 700; }
+        .admin-title i { color: var(--primary-color); }
+        .admin-actions { display: flex; align-items: center; gap: .5rem; }
+        .admin-container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.25rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform .15s ease;
+        }
+        .card:hover { transform: translateY(-2px); }
+        .card h3 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .5rem; }
+        .muted { color: var(--muted-text, #666); font-size: .95rem; }
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            padding: .5rem .75rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn-danger { background: #b00020; color: #fff; border: none; }
+        .admin-toolbar { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 1.25rem; }
+        .toolbar-chip { background: rgba(0,0,0,0.05); padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; }
+        .grid-actions { margin-top: .75rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+        .notice { margin: 1rem 0; padding: .75rem; border-radius: 8px; background: rgba(255,193,7,.12); color: #8a6d1a; }
+    </style>
+</head>
+<body>
+    <!-- Floating Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header class="admin-header">
+        <div class="admin-title">
+            <i class="fas fa-shield-alt"></i>
+            <span>Admin Dashboard</span>
+        </div>
+        <div class="admin-actions">
+            <a href="index.html" class="btn-outline" title="Home"><i class="fas fa-home"></i> Home</a>
+            <button id="logoutBtn" class="btn-danger" title="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <div class="notice">
+            <strong>Note:</strong> This demo dashboard is client-side only. For real authentication, connect to a backend.
+        </div>
+
+        <div class="admin-toolbar">
+            <span class="toolbar-chip"><i class="fas fa-user-shield"></i> Admin</span>
+            <span class="toolbar-chip" id="sessionStatus"><i class="fas fa-lock"></i> Session Active</span>
+        </div>
+
+        <section class="cards">
+            <article class="card">
+                <h3><i class="fas fa-bullhorn"></i> Church Updates</h3>
+                <p class="muted">Post or edit announcements shown on the homepage.</p>
+                <div class="grid-actions">
+                    <button class="btn-outline"><i class="fas fa-plus"></i> New Update</button>
+                    <button class="btn-outline"><i class="fas fa-edit"></i> Manage</button>
+                </div>
+            </article>
+            <article class="card">
+                <h3><i class="fas fa-calendar-alt"></i> Events</h3>
+                <p class="muted">Add upcoming events and schedules.</p>
+                <div class="grid-actions">
+                    <button class="btn-outline"><i class="fas fa-plus"></i> New Event</button>
+                    <button class="btn-outline"><i class="fas fa-edit"></i> Manage</button>
+                </div>
+            </article>
+            <article class="card">
+                <h3><i class="fas fa-images"></i> Gallery</h3>
+                <p class="muted">Upload and organize gallery images.</p>
+                <div class="grid-actions">
+                    <button class="btn-outline"><i class="fas fa-upload"></i> Upload</button>
+                    <button class="btn-outline"><i class="fas fa-edit"></i> Manage</button>
+                </div>
+            </article>
+            <article class="card">
+                <h3><i class="fas fa-envelope-open-text"></i> Contact Messages</h3>
+                <p class="muted">Review messages submitted via the contact form.</p>
+                <div class="grid-actions">
+                    <button class="btn-outline"><i class="fas fa-inbox"></i> View Inbox</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        // Protect dashboard: redirect to admin-login if not logged in
+        (function() {
+            const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.replace('admin-login.html');
+            }
+        })();
+
+        // Logout
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('adminLoggedIn');
+                    window.location.replace('admin-login.html');
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

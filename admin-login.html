@@ -3,21 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Admin Login | St. Anthony's Church Green Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+    <style>
+        .login-container {
+            max-width: 450px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .login-header i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-actions {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .forgot-password {
+            text-align: right;
+            margin: 1rem 0;
+        }
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow: auto;
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 10% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .modal-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-body {
+            margin-bottom: 2rem;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            gap: 5px;
+        }
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+        .step-dot.active {
+            background-color: var(--primary-color);
+        }
+        .success-message {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: rgba(40, 167, 69, 0.1);
+            border-radius: 5px;
+            margin: 1rem 0;
+            display: none;
+        }
+        .success-message.show { display: block; }
+        .success-message i {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="section">
-        <h2>Admin Login</h2>
-        <form class="login-card">
-            <div class="form-group">
-                <input type="email" placeholder="Admin Email" required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Admin Password" required>
-            </div>
-            <button type="submit" class="btn-primary" style="width: 100%;">Login</button>
-        </form>
+    <!-- Floating Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <!-- Back Navigation -->
+    <div class="back-nav">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
     </div>
+
+    <div class="section">
+        <div class="login-container">
+            <div class="login-header">
+                <i class="fas fa-user-shield"></i>
+                <h2>Admin Login</h2>
+                <p>Please enter your credentials to access the admin area</p>
+            </div>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminEmail">Email</label>
+                    <input type="email" id="adminEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <a href="index.html" class="home-link">
+            <i class="fas fa-home"></i> Return to Homepage
+        </a>
+    </div>
+    
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            
+            <div class="modal-header">
+                <h3>Reset Password</h3>
+                <div class="step-indicator">
+                    <div class="step-dot active" data-step="1"></div>
+                    <div class="step-dot" data-step="2"></div>
+                    <div class="step-dot" data-step="3"></div>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Step 1: Email Verification -->
+                <div class="step active" id="step1">
+                    <p>Enter your email address to receive a password reset link</p>
+                    <div class="form-group">
+                        <input type="email" id="resetEmail" placeholder="Enter your email" required>
+                    </div>
+                    <button class="btn-primary" id="sendEmailBtn">
+                        <i class="fas fa-envelope"></i> Send Reset Link
+                    </button>
+                </div>
+                
+                <!-- Step 2: Email Sent Confirmation -->
+                <div class="step" id="step2">
+                    <div class="success-message show">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h4>Email Sent!</h4>
+                        <p>We've sent a password reset link to your email address. Please check your inbox.</p>
+                    </div>
+                    <button class="btn-primary" id="checkEmailBtn">
+                        <i class="fas fa-check"></i> I've Received the Email
+                    </button>
+                </div>
+                
+                <!-- Step 3: New Password -->
+                <div class="step" id="step3">
+                    <p>Create a new password for your account</p>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                    </div>
+                    <button class="btn-primary" id="resetPasswordBtn">
+                        <i class="fas fa-key"></i> Reset Password
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple client-side login demo: validates non-empty fields, sets a session flag, redirects to dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('adminLoginForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = (document.getElementById('adminEmail') || {}).value || '';
+                    const pwd = (document.getElementById('adminPassword') || {}).value || '';
+                    if (!email || !pwd) {
+                        alert('Please enter email and password');
+                        return;
+                    }
+                    // TODO: Replace with real authentication. For now, set localStorage flag
+                    localStorage.setItem('adminLoggedIn', 'true');
+                    window.location.replace('admin-dashboard.html');
+                });
+            }
+        });
+        // Forgot Password Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+            const modal = document.getElementById('forgotPasswordModal');
+            const closeBtn = document.getElementById('closeModal');
+            const sendEmailBtn = document.getElementById('sendEmailBtn');
+            const checkEmailBtn = document.getElementById('checkEmailBtn');
+            const resetPasswordBtn = document.getElementById('resetPasswordBtn');
+            
+            // Open modal
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+            
+            // Close modal
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                resetSteps();
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    resetSteps();
+                }
+            });
+            
+            // Handle step progression
+            sendEmailBtn.addEventListener('click', function() {
+                const email = document.getElementById('resetEmail').value;
+                if(email) {
+                    goToStep(2);
+                } else {
+                    alert('Please enter your email address');
+                }
+            });
+            
+            checkEmailBtn.addEventListener('click', function() {
+                goToStep(3);
+            });
+            
+            resetPasswordBtn.addEventListener('click', function() {
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if(!newPassword || !confirmPassword) {
+                    alert('Please enter and confirm your new password');
+                    return;
+                }
+                
+                if(newPassword !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                // Password reset would be sent to server here
+                alert('Password reset successfully! You can now login with your new password.');
+                modal.style.display = 'none';
+                resetSteps();
+            });
+            
+            function goToStep(stepNum) {
+                // Hide all steps
+                document.querySelectorAll('.step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                
+                // Show target step
+                document.getElementById(`step${stepNum}`).classList.add('active');
+                
+                // Update step indicator
+                document.querySelectorAll('.step-dot').forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                document.querySelector(`.step-dot[data-step="${stepNum}"]`).classList.add('active');
+            }
+            
+            function resetSteps() {
+                goToStep(1);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

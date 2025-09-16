@@ -278,6 +278,7 @@ a, button {
         padding: 0 1rem;
         width: 90%;
         text-align: center;
+        top: 50%;
     }
     
     .hero-content h1 {
@@ -296,19 +297,20 @@ a, button {
         min-width: 180px;
     }
     
-    /* Adjusted slideshow for better mobile experience */
+    /* Ensure hero slideshow fills viewport on mobile */
     .slideshow-container {
-        height: 60vh;
+        height: 100vh;
     }
     
     .slide {
-        height: 60vh;
+        height: 100vh;
     }
     
     .slide img {
-        object-fit: cover;
         height: 100%;
         width: 100%;
+        object-fit: cover;
+        object-position: center;
     }
     
     /* Better ticker display on mobile */
@@ -528,7 +530,7 @@ a, button {
     }
     
     .hero-content {
-        top: 45%;
+        top: 50%;
     }
     
     .nav-menu.active {

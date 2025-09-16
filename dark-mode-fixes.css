@@ -1,0 +1,29 @@
+/* Dark Mode Star Enhancements */
+.dark-mode .stars {
+    display: block;
+    opacity: 1;
+}
+
+.dark-mode .star {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
+    animation: twinkle-dark 3s infinite alternate;
+}
+
+@keyframes twinkle-dark {
+    0% { 
+        opacity: 0.2; 
+        transform: scale(0.5); 
+        box-shadow: 0 0 2px var(--secondary-color);
+    }
+    50% { 
+        opacity: 0.8; 
+        transform: scale(1); 
+        box-shadow: 0 0 8px var(--secondary-color), 0 0 12px var(--secondary-color);
+    }
+    100% { 
+        opacity: 0.4; 
+        transform: scale(0.7); 
+        box-shadow: 0 0 4px var(--secondary-color);
+    }
+}

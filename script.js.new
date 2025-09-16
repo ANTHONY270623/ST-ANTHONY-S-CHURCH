@@ -69,40 +69,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeSwitch = document.getElementById('darkModeSwitch');
-
-    function setDarkModeUI(enabled) {
-        if (darkModeToggle) {
-            darkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        }
-        if (darkModeSwitch) {
-            darkModeSwitch.checked = enabled;
-        }
-    }
-
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        const enabled = document.body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
-        setDarkModeUI(enabled);
-        createStars();
-        console.log(enabled ? 'Dark mode enabled' : 'Dark mode disabled');
-    }
-
     if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', toggleDarkMode);
-    }
-    if (darkModeSwitch) {
-        darkModeSwitch.addEventListener('change', toggleDarkMode);
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('darkMode', 'enabled');
+                console.log("Dark mode enabled");
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', 'disabled');
+                console.log("Dark mode disabled");
+            }
+            
+            // Recreate stars when toggling dark mode
+            createStars();
+        });
     }
 
     // Check for saved dark mode preference
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
-        setDarkModeUI(true);
+        if (darkModeToggle) {
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
         console.log("Dark mode loaded from preferences");
-    } else {
-        setDarkModeUI(false);
     }
 
     // Create stars

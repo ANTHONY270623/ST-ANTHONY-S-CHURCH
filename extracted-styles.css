@@ -1,0 +1,93 @@
+/* Extracted styles from inline HTML */
+
+/* Header and section styles */
+.section-header h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.patron-saint-header {
+    color: var(--primary-color);
+    margin: 2rem 0 1rem;
+}
+
+/* Icon styles */
+.icon-large {
+    font-size: 3rem;
+}
+
+/* Mass schedule */
+.mass-schedule {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+.mass-schedule-header {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+/* Announcements */
+.announcements {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.announcement-item {
+    font-size: 1.1rem;
+}
+
+/* Hero content */
+.hero-content-bottom {
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    z-index: 3;
+}
+
+/* Card styles */
+.clickable-card {
+    cursor: pointer;
+}
+
+/* Image styles */
+.profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Gallery headers */
+.gallery-header {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Social media section */
+.social-media-header {
+    margin-top: 2rem;
+}
+
+/* Map container */
+.map-container {
+    margin-top: 2rem;
+}
+
+/* Map iframe */
+.map-iframe {
+    border: 0;
+    border-radius: 10px;
+    width: 100%;
+    height: 350px;
+}
+
+/* Contact form header */
+.contact-header {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
