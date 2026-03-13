@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - St. Anthony's Church</title>
+    <!-- Font Awesome for social icons (Threads icon requires v6.5+) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Optional: small fix styles for Threads icon color -->
+    <link rel="stylesheet" href="threads-fix.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .form-alert { display:none; margin-bottom:12px; padding:10px; border-radius:6px; }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #8B4513;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 150px;
+        }
+        button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #6b3510;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #8B4513;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        /* Simple styles for social icons row */
+        .social-links {
+            margin-top: 24px;
+            text-align: center;
+        }
+        .social-links .label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8B4513;
+            font-weight: bold;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 8px;
+            font-size: 22px;
+            color: #8B4513;
+            text-decoration: none;
+        }
+        .social-links a:hover { color: #6b3510; }
+    /* Replace inline center note styles */
+    .center-note { margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact St. Anthony's Church</h1>
+        <p>Use this form to send us a message directly.</p>
+        
+    <div id="form-alert" class="form-alert"></div>
+    <form action="contact_submit.php" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit">Send Message</button>
+            
+            <div class="center-note">
+                <p>You can also email us directly at: <a href="mailto:greenparkchurch25@gmail.com">greenparkchurch25@gmail.com</a></p>
+                <p><a href="contact-direct.html">Click here for other contact options</a> if you're having trouble with the form.</p>
+            </div>
+        </form>
+
+        <!-- Social links (including Threads) -->
+        <div class="social-links">
+            <span class="label">Follow us</span>
+            <a href="https://www.facebook.com/share/19cjbzWyGW/" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@stanthonyschurchgreenpark?feature=shared" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/stanthonyschurch_greenpark?igsh=cjNhcGR3ZGthZjdv" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="X" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.threads.com/@stanthonyschurch_greenpark" title="Threads" target="_blank" rel="noopener"><i class="fab fa-threads"></i></a>
+        </div>
+        
+        <a href="index.html" class="back-link">← Back to Home Page</a>
+    </div>
+    <script>
+        // Show a friendly status message after redirect
+        (function(){
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+            if(!status) return;
+            const box = document.getElementById('form-alert');
+            let text = '';
+            let bg = '#d1e7dd', color = '#0f5132', border = '1px solid #badbcc';
+            if (status === 'ok') {
+                text = 'Thank you! Your message was sent successfully.';
+            } else if (status === 'saved') {
+                text = "We've saved your message and will review it shortly. Email notification couldn't be sent.";
+                bg = '#fff3cd'; color = '#664d03'; border = '1px solid #ffecb5';
+            } else if (status === 'error') {
+                text = 'Sorry, there was a problem sending your message. Please try again or use the email link below.';
+                bg = '#f8d7da'; color = '#842029'; border = '1px solid #f5c2c7';
+            } else if (status === 'invalid') {
+                text = 'Invalid request. Please submit the form again.';
+                bg = '#f8d7da'; color = '#842029'; border = '1px solid #f5c2c7';
+            }
+            if (text) {
+                box.textContent = text;
+                box.style.display = 'block';
+                box.style.background = bg; box.style.color = color; box.style.border = border;
+            }
+        })();
+    </script>
+</body>
+</html>

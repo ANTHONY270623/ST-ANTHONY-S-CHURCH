@@ -1,0 +1,355 @@
+// Create floating stars
+function createStars() {
+    const starsContainer = document.getElementById('stars');
+    if (!starsContainer) return;
+    
+    const starsCount = 100;
+    starsContainer.innerHTML = ''; // Clear existing stars
+    
+    for (let i = 0; i < starsCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Random size between 1px and 3px
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Random animation delay
+        star.style.animationDelay = `${Math.random() * 2}s`;
+        
+        starsContainer.appendChild(star);
+    }
+}
+
+// Slideshow functionality
+let slideIndex = 0;
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    
+    if (!slides.length) return;
+    
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    
+    slideIndex++;
+    
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }    
+    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    
+    slides[slideIndex-1].style.display = "block";  
+    if (dots[slideIndex-1]) {
+        dots[slideIndex-1].className += " active";
+    }
+    
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+
+function currentSlide(n) {
+    slideIndex = n - 1;
+    showSlides();
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM loaded - initializing website");
+    
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeSwitch = document.getElementById('darkModeSwitch');
+
+    function setDarkModeUI(enabled) {
+        if (darkModeToggle) {
+            darkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        if (darkModeSwitch) {
+            darkModeSwitch.checked = enabled;
+        }
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const enabled = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+        setDarkModeUI(enabled);
+        createStars();
+        console.log(enabled ? 'Dark mode enabled' : 'Dark mode disabled');
+    }
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
+    if (darkModeSwitch) {
+        darkModeSwitch.addEventListener('change', toggleDarkMode);
+    }
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        setDarkModeUI(true);
+        console.log("Dark mode loaded from preferences");
+    } else {
+        setDarkModeUI(false);
+    }
+
+    // Parish Administration Dark Mode Toggle
+    const parishDarkModeToggle = document.getElementById('parishDarkModeToggle');
+    const parishSection = document.getElementById('parish');
+
+    function setParishDarkModeUI(enabled) {
+        if (parishDarkModeToggle) {
+            parishDarkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+    }
+
+    function toggleParishDarkMode() {
+        if (parishSection) {
+            parishSection.classList.toggle('parish-dark-mode');
+            const enabled = parishSection.classList.contains('parish-dark-mode');
+            localStorage.setItem('parishDarkMode', enabled ? 'enabled' : 'disabled');
+            setParishDarkModeUI(enabled);
+            console.log(enabled ? 'Parish dark mode enabled' : 'Parish dark mode disabled');
+        }
+    }
+
+    if (parishDarkModeToggle) {
+        parishDarkModeToggle.addEventListener('click', toggleParishDarkMode);
+    }
+
+    // Check for saved parish dark mode preference
+    if (localStorage.getItem('parishDarkMode') === 'enabled' && parishSection) {
+        parishSection.classList.add('parish-dark-mode');
+        setParishDarkModeUI(true);
+        console.log("Parish dark mode loaded from preferences");
+    } else {
+        setParishDarkModeUI(false);
+    }
+
+    // Create stars
+    createStars();
+    console.log("Stars created");
+
+    // Start slideshow
+    showSlides();
+    
+    // Rest of the initialization code...
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Dropdown menu functionality - enhanced for both mobile and desktop
+    const dropdowns = document.querySelectorAll('.dropdown');
+    const nestedDropdowns = document.querySelectorAll('.nested-dropdown');
+    const dropdownStates = new Map(); // Track open state of each dropdown
+    
+    // Initialize nested dropdowns
+    nestedDropdowns.forEach((nestedDropdown) => {
+        const nestedLink = nestedDropdown.querySelector('a');
+        const nestedContent = nestedDropdown.querySelector('.nested-dropdown-content');
+        
+        if (window.innerWidth <= 767 && nestedLink && nestedContent) {
+            nestedLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (nestedContent.style.display === 'block') {
+                    nestedContent.style.display = 'none';
+                } else {
+                    nestedContent.style.display = 'block';
+                }
+            });
+        }
+    });
+    
+    // Initialize each dropdown
+    dropdowns.forEach((dropdown) => {
+        const dropdownLink = dropdown.querySelector('.nav-link');
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+        if (!dropdownLink || !dropdownContent) return;
+        
+        dropdownStates.set(dropdown, false); // Initially closed
+        
+        // For mobile: toggle dropdown on click
+        dropdownLink.addEventListener('click', (e) => {
+            if (window.innerWidth <= 767) {
+                e.preventDefault();
+                
+                // Close all other dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle this dropdown
+                dropdown.classList.toggle('active');
+            } else {
+                // For desktop - prevent navigation when clicking the dropdown link
+                e.preventDefault();
+                
+                const isOpen = !dropdownStates.get(dropdown);
+                dropdownStates.set(dropdown, isOpen);
+                
+                // Close all other dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown && dropdownStates.get(otherDropdown)) {
+                        const otherContent = otherDropdown.querySelector('.dropdown-content');
+                        if (otherContent) {
+                            otherContent.style.display = 'none';
+                            dropdownStates.set(otherDropdown, false);
+                        }
+                    }
+                });
+                
+                // Toggle this dropdown
+                if (isOpen) {
+                    dropdownContent.style.display = 'block';
+                } else {
+                    dropdownContent.style.display = 'none';
+                }
+            }
+        });
+        
+        // Add extra hover stability for desktop
+        if (window.innerWidth > 767) {
+            dropdown.addEventListener('mouseenter', () => {
+                dropdownStates.set(dropdown, true);
+                dropdownContent.style.display = 'block';
+            });
+            
+            // Add a slight delay before closing the dropdown
+            // to prevent accidental closures when moving mouse
+            dropdown.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    if (!dropdown.matches(':hover')) {
+                        dropdownStates.set(dropdown, false);
+                        dropdownContent.style.display = 'none';
+                    }
+                }, 100);
+            });
+        }
+        
+        // Handle dropdown menu items clicks
+        dropdownContent.querySelectorAll('a').forEach(dropdownItem => {
+            dropdownItem.addEventListener('click', () => {
+                // Close mobile menu and dropdowns when a dropdown item is clicked
+                if (hamburger) hamburger.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                dropdown.classList.remove('active');
+                dropdownStates.set(dropdown, false);
+            });
+        });
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 767) {
+            // On desktop, remove active class and reset to hover behavior
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                if (dropdownContent) dropdownContent.style.removeProperty('display');
+            });
+        } else {
+            // On mobile, ensure dropdowns are hidden unless active
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.classList.contains('active')) {
+                    const dropdownContent = dropdown.querySelector('.dropdown-content');
+                    if (dropdownContent) dropdownContent.style.display = 'none';
+                }
+            });
+        }
+        
+        // Recreate stars on resize for better responsiveness
+        createStars();
+    });
+
+    // We've removed all nav-link click handling from here
+    // It's now moved to navigation.js to avoid conflicts
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // No automatic scroll-based active state changes
+    // Navigation highlighting is ONLY controlled by clicks
+
+    // Remove preloader after page loads
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        window.addEventListener('load', function() {
+            preloader.style.display = 'none';
+        });
+    }
+    
+    // Contact form handling
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formStatus = document.getElementById('form-status');
+            formStatus.innerHTML = '<p style="background-color: #e1f5fe; padding: 10px; border-radius: 4px;">Sending your message...</p>';
+            
+            const formData = new FormData(contactForm);
+            
+            fetch(contactForm.getAttribute('action'), {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                console.log("Response status:", response.status);
+                return response.text();
+            })
+            .then(data => {
+                console.log("Server response:", data);
+                if (data.includes("success")) {
+                    formStatus.innerHTML = '<p style="background-color: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 4px;">Your message has been sent successfully!</p>';
+                    contactForm.reset();
+                } else {
+                    formStatus.innerHTML = '<p style="background-color: #ffebee; color: #c62828; padding: 10px; border-radius: 4px;">' + data + '</p>';
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                formStatus.innerHTML = '<p style="background-color: #ffebee; color: #c62828; padding: 10px; border-radius: 4px;">An error occurred. Please try again later.</p>';
+            });
+        });
+    }
+    
+    console.log("Website initialization complete");
+});

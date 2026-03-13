@@ -1,0 +1,44 @@
+/* Threads icon color fix for sidebar and contact section */
+.sidebar-link.threads { 
+    background: #000; 
+    color: #fff !important; 
+}
+
+.sidebar-link.threads:hover { 
+    color: gold !important; 
+}
+
+/* Make the Threads icon in the contact section match other social media icons */
+.social-links a[title="Threads"] { 
+    color: var(--primary-color) !important; 
+    display: inline-block !important;
+    background-color: transparent;
+}
+
+.social-links a[title="Threads"]:hover { 
+    color: var(--secondary-color) !important; 
+}
+
+/* Custom styling for the Threads icon to ensure visibility */
+.social-links a[title="Threads"] i.fab.fa-threads {
+    font-size: 1.5rem;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Dark mode specific */
+.dark-mode .social-links a[title="Threads"] {
+    color: #fff !important;
+}
+
+.dark-mode .social-links a[title="Threads"]:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* Alternative icon implementation for Threads */
+.social-links a[title="Threads"] i.fab.fa-threads::before {
+    content: "\e618"; /* Font Awesome icon code for Threads */
+    display: inline-block !important;
+    visibility: visible !important;
+}

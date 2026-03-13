@@ -1,0 +1,145 @@
+/* Form Image Logos Styling - MUCH LARGER for Maximum Visibility */
+.baptism-form-logo,
+.communion-form-logo,
+.confirmation-form-logo,
+.marriage-form-logo,
+.burial-form-logo,
+.family-form-logo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #8B4513;
+    box-shadow: 0 6px 24px rgba(139, 69, 19, 0.5);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    display: block;
+    background: #ffffff; /* Consistent white background for all logos */
+    padding: 4px; /* Increased padding for larger size */
+}
+
+.baptism-form-logo:hover,
+.communion-form-logo:hover,
+.confirmation-form-logo:hover,
+.marriage-form-logo:hover,
+.burial-form-logo:hover,
+.family-form-logo:hover {
+    border-color: #A0522D;
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.6);
+    transform: scale(1.08);
+}
+
+/* Larger form logos for test page - INCREASED SIZE */
+.baptism-logo-small,
+.communion-logo-small,
+.confirmation-logo-small,
+.marriage-logo-small,
+.burial-logo-small,
+.family-logo-small {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #8B4513;
+    margin-right: 15px;
+    vertical-align: middle;
+    box-shadow: 0 3px 12px rgba(139, 69, 19, 0.5);
+    background: #ffffff; /* Consistent white background */
+    padding: 3px; /* Increased padding for better visibility */
+}
+
+/* Enhanced form-icon styling to accommodate much larger images */
+.form-icon {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 15px;
+}
+
+.form-icon i {
+    font-size: 48px;
+    color: #8B4513;
+}
+
+/* Dark mode support for all form images - CONSISTENT BACKGROUNDS */
+.dark-mode .baptism-form-logo,
+.dark-mode .communion-form-logo,
+.dark-mode .confirmation-form-logo,
+.dark-mode .marriage-form-logo,
+.dark-mode .burial-form-logo,
+.dark-mode .family-form-logo,
+.dark-mode .baptism-logo-small,
+.dark-mode .communion-logo-small,
+.dark-mode .confirmation-logo-small,
+.dark-mode .marriage-logo-small,
+.dark-mode .burial-logo-small,
+.dark-mode .family-logo-small {
+    border-color: #D2B48C;
+    box-shadow: 0 2px 8px rgba(210, 180, 140, 0.3);
+    background: #2a2a2a; /* Dark background for dark mode */
+}
+
+.dark-mode .baptism-form-logo:hover,
+.dark-mode .communion-form-logo:hover,
+.dark-mode .confirmation-form-logo:hover,
+.dark-mode .marriage-form-logo:hover,
+.dark-mode .burial-form-logo:hover,
+.dark-mode .family-form-logo:hover {
+    border-color: #F5DEB3;
+    box-shadow: 0 4px 12px rgba(210, 180, 140, 0.5);
+}
+
+/* Mobile responsive adjustments for much larger logos */
+@media (max-width: 768px) {
+    .baptism-form-logo,
+    .communion-form-logo,
+    .confirmation-form-logo,
+    .marriage-form-logo,
+    .burial-form-logo,
+    .family-form-logo {
+        width: 140px;
+        height: 140px;
+        border-width: 4px;
+        padding: 3px;
+    }
+    
+    .form-icon {
+        height: 170px;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .baptism-form-logo,
+    .communion-form-logo,
+    .confirmation-form-logo,
+    .marriage-form-logo,
+    .burial-form-logo,
+    .family-form-logo {
+        width: 120px;
+        height: 120px;
+        border-width: 4px;
+        padding: 3px;
+    }
+    
+    .form-icon {
+        height: 150px;
+        margin-bottom: 15px;
+        padding: 8px;
+    }
+    
+    .baptism-logo-small,
+    .communion-logo-small,
+    .confirmation-logo-small,
+    .marriage-logo-small,
+    .burial-logo-small,
+    .family-logo-small {
+        width: 50px;
+        height: 50px;
+        margin-right: 12px;
+        padding: 2px;
+    }
+}

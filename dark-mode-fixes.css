@@ -1,0 +1,360 @@
+/* Dark Mode Star Enhancements */
+.dark-mode .stars {
+    display: block;
+    opacity: 1;
+}
+
+.dark-mode .star {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
+    animation: twinkle-dark 3s infinite alternate;
+}
+
+@keyframes twinkle-dark {
+    0% { 
+        opacity: 0.2; 
+        transform: scale(0.5); 
+        box-shadow: 0 0 2px var(--secondary-color);
+    }
+    50% { 
+        opacity: 0.8; 
+        transform: scale(1); 
+        box-shadow: 0 0 8px var(--secondary-color), 0 0 12px var(--secondary-color);
+    }
+    100% { 
+        opacity: 0.4; 
+        transform: scale(0.7); 
+        box-shadow: 0 0 4px var(--secondary-color);
+    }
+}
+
+/* Parish Administration Section Styles */
+.priest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.priest-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.priest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: var(--primary-color);
+}
+
+.priest-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+}
+
+.priest-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.priest-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.priest-card p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.priest-card small {
+    color: #666;
+    font-style: italic;
+}
+
+/* Mobile responsiveness for Parish Administration */
+@media (max-width: 768px) {
+    
+    .priest-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .priest-card {
+        padding: 1.5rem;
+    }
+    
+    .priest-image {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Dark Mode Styles for Priest Detail Pages */
+.dark-mode .admin-profile {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    border: 1px solid #444;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dark-mode .admin-details h1 {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.dark-mode .admin-details p {
+    color: #f0f0f0;
+}
+
+.dark-mode .admin-details strong {
+    color: #ffd700;
+}
+
+.dark-mode .detail-section h2 {
+    color: #ffd700;
+    border-bottom-color: #444;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.dark-mode .admin-image {
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    border: 2px solid #444;
+}
+
+.dark-mode .admin-image img {
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.dark-mode .back-link {
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .back-link:hover {
+    color: #ffffff;
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Dark mode container styling for priest pages */
+.dark-mode .container {
+    background: rgba(30, 30, 30, 0.5);
+    border-radius: 10px;
+    padding: 1rem !important;
+    margin-bottom: 1rem;
+}
+
+/* Enhanced dark mode body styling for priest pages */
+.dark-mode body {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
+    min-height: 100vh;
+}
+
+/* Dark mode animations for priest detail pages */
+.dark-mode .admin-profile {
+    animation: fadeInDark 0.8s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-mode .admin-profile::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 60%);
+    animation: glitterRotate 20s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dark-mode .admin-details {
+    position: relative;
+    z-index: 2;
+}
+
+.dark-mode .admin-image {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glittering text effect for headings */
+.dark-mode .admin-details h1 {
+    color: #ffd700;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.3),
+        0 0 30px rgba(255, 215, 0, 0.2);
+    animation: goldGlitter 3s ease-in-out infinite alternate;
+}
+
+.dark-mode .detail-section h2 {
+    color: #ffd700;
+    border-bottom-color: #444;
+    text-shadow: 
+        0 0 5px rgba(255, 215, 0, 0.4),
+        0 0 10px rgba(255, 215, 0, 0.2);
+    animation: subtleGlitter 4s ease-in-out infinite alternate;
+}
+
+/* Enhanced glittering image effect */
+.dark-mode .admin-image {
+    box-shadow: 
+        0 5px 20px rgba(255, 215, 0, 0.3),
+        0 0 30px rgba(255, 215, 0, 0.1),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    animation: imageGlow 2.5s ease-in-out infinite alternate;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-mode .admin-image::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 215, 0, 0.1) 50%,
+        transparent 70%
+    );
+    animation: shimmer 3s linear infinite;
+    pointer-events: none;
+}
+
+/* Glittering particles effect */
+.dark-mode .admin-profile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, rgba(255, 215, 0, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 10% 90%, rgba(255, 215, 0, 0.2) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px, 90px 90px;
+    animation: twinkleParticles 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes fadeInDark {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glitterRotate {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(1); }
+    75% { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes goldGlitter {
+    0% { 
+        text-shadow: 
+            0 0 10px rgba(255, 215, 0, 0.5),
+            0 0 20px rgba(255, 215, 0, 0.3),
+            0 0 30px rgba(255, 215, 0, 0.2);
+    }
+    50% { 
+        text-shadow: 
+            0 0 15px rgba(255, 215, 0, 0.8),
+            0 0 25px rgba(255, 215, 0, 0.5),
+            0 0 35px rgba(255, 215, 0, 0.3),
+            0 0 45px rgba(255, 215, 0, 0.1);
+    }
+    100% { 
+        text-shadow: 
+            0 0 10px rgba(255, 215, 0, 0.5),
+            0 0 20px rgba(255, 215, 0, 0.3),
+            0 0 30px rgba(255, 215, 0, 0.2);
+    }
+}
+
+@keyframes subtleGlitter {
+    0% { 
+        text-shadow: 
+            0 0 5px rgba(255, 215, 0, 0.4),
+            0 0 10px rgba(255, 215, 0, 0.2);
+    }
+    50% { 
+        text-shadow: 
+            0 0 8px rgba(255, 215, 0, 0.6),
+            0 0 15px rgba(255, 215, 0, 0.3),
+            0 0 20px rgba(255, 215, 0, 0.1);
+    }
+    100% { 
+        text-shadow: 
+            0 0 5px rgba(255, 215, 0, 0.4),
+            0 0 10px rgba(255, 215, 0, 0.2);
+    }
+}
+
+@keyframes imageGlow {
+    0% { 
+        box-shadow: 
+            0 5px 20px rgba(255, 215, 0, 0.3),
+            0 0 30px rgba(255, 215, 0, 0.1),
+            inset 0 0 20px rgba(255, 215, 0, 0.1);
+    }
+    50% { 
+        box-shadow: 
+            0 8px 30px rgba(255, 215, 0, 0.5),
+            0 0 40px rgba(255, 215, 0, 0.2),
+            inset 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+    100% { 
+        box-shadow: 
+            0 5px 20px rgba(255, 215, 0, 0.3),
+            0 0 30px rgba(255, 215, 0, 0.1),
+            inset 0 0 20px rgba(255, 215, 0, 0.1);
+    }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes twinkleParticles {
+    0%, 100% { opacity: 0.3; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.5; }
+    75% { opacity: 0.9; }
+}
