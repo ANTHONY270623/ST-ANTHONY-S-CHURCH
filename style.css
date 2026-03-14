@@ -497,53 +497,6 @@ a .fas.fa-cross,
     display: none;
 }
 
-/* Inline theme toggle under login buttons */
-.theme-toggle-inline {
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-}
-
-.theme-toggle-label {
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-#darkModeSwitch {
-    appearance: none;
-    width: 48px;
-    height: 26px;
-    background: #ccc;
-    border-radius: 999px;
-    position: relative;
-    outline: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-#darkModeSwitch:checked {
-    background: var(--primary-color);
-}
-
-#darkModeSwitch::after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border-radius: 50%;
-    transition: transform 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-}
-
-#darkModeSwitch:checked::after {
-    transform: translateX(22px);
-}
-
 /* Utility styles for inline form layout on registration page */
 .form-inline {
     display: flex;
