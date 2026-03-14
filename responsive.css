@@ -576,7 +576,7 @@ a, button {
             transform: translateX(100%);
         }
         100% {
-            transform: translateX(-150%);
+            transform: translateX(-200%);
         }
     }
 }
@@ -1566,7 +1566,7 @@ body {
     }
 
     .home-ticker .ticker-content {
-        animation: scroll 22s linear infinite;
+        animation: scroll 30s linear infinite;
     }
 
     .updates-ticker .ticker-content {
