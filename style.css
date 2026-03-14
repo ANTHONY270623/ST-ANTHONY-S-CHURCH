@@ -350,6 +350,7 @@ a .fas.fa-cross,
     object-fit: contain; /* Show the whole image */
     object-position: center; /* Center the image */
     background-color: #000; /* Black background for letterboxing */
+    transform: scale(1.05); /* Make images slightly bigger */
 }
 
 .fade {
