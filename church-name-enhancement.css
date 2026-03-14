@@ -63,15 +63,18 @@
 /* Mobile Responsive */
 @media (max-width: 767px) {
     .church-name-fixed {
-        padding: 15px 25px;
+        top: 15%;
+        padding: 10px 20px;
+        z-index: 15;
     }
     
     .church-name-fixed h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 5px;
     }
     
     .church-name-fixed h2 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 }
 
