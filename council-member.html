@@ -83,6 +83,14 @@
     </style>
 </head>
 <body>
+    <!-- Floating Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Back to Home Link -->
     <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -90,11 +98,11 @@
     
     <div class="admin-profile">
         <div class="admin-image">
-            <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Council Member">
+            <img src="councilmember1.jpg" alt="SUMITRA">
         </div>
         
         <div class="admin-details">
-            <h1>John Doe</h1>
+            <h1>SUMITRA</h1>
             <p><strong>Position:</strong> Parish Council President</p>
             
             <div class="detail-section">
@@ -105,13 +113,13 @@
             
             <div class="detail-section">
                 <h2>Contact Information</h2>
-                <p><strong>Email:</strong> johndoe@example.com</p>
+                <p><strong>Email:</strong> sumitra@stanthonyschurch.com</p>
                 <p><strong>Phone:</strong> +91 98765 43210</p>
             </div>
             
             <div class="detail-section">
                 <h2>Responsibilities</h2>
-                <p>As the Parish Council President, John oversees all administrative decisions and works closely with the clergy to ensure the smooth functioning of church activities and programs.</p>
+                <p>As the Parish Council President, Sumitra oversees all administrative decisions and works closely with the clergy to ensure the smooth functioning of church activities and programs.</p>
                 <p>Key responsibilities include:</p>
                 <ul style="margin-left: 1.5rem; line-height: 1.6;">
                     <li>Chairing monthly council meetings</li>
@@ -122,11 +130,66 @@
             </div>
             
             <div class="detail-section">
-                <h2>About John</h2>
-                <p>John has been an active member of St. Anthony's Church for over a decade. His leadership has been instrumental in the growth of the parish community. He has spearheaded several initiatives including the renovation of the parish hall and the establishment of the youth ministry program.</p>
-                <p>Outside of his church responsibilities, John works as a software engineer and is passionate about using technology to enhance church communications and outreach.</p>
+                <h2>About Sumitra</h2>
+                <p>Sumitra has been an active member of St. Anthony's Church for over a decade. Her leadership has been instrumental in the growth of the parish community. She has spearheaded several initiatives including the renovation of the parish hall and the establishment of the youth ministry program.</p>
+                <p>Her dedication to the church community and her excellent organizational skills make her an invaluable leader for the parish council.</p>
             </div>
         </div>
     </div>
+    
+    <!-- JavaScript for Dark Mode and Stars -->
+    <script>
+        // Create floating stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            if (!starsContainer) return;
+            
+            const starsCount = 100;
+            starsContainer.innerHTML = ''; // Clear existing stars
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Dark Mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        function setDarkModeUI(enabled) {
+            if (darkModeToggle) {
+                darkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            }
+        }
+        
+        function toggleDarkMode() {
+            const enabled = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+            setDarkModeUI(enabled);
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', toggleDarkMode);
+            }
+            
+            // Load dark mode preference
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                setDarkModeUI(true);
+                console.log("Dark mode loaded from preferences on council member page");
+            } else {
+                setDarkModeUI(false);
+            }
+        });
+    </script>
 </body>
 </html>

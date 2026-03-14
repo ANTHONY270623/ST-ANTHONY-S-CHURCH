@@ -105,6 +105,39 @@ document.addEventListener('DOMContentLoaded', function() {
         setDarkModeUI(false);
     }
 
+    // Parish Administration Dark Mode Toggle
+    const parishDarkModeToggle = document.getElementById('parishDarkModeToggle');
+    const parishSection = document.getElementById('parish');
+
+    function setParishDarkModeUI(enabled) {
+        if (parishDarkModeToggle) {
+            parishDarkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+    }
+
+    function toggleParishDarkMode() {
+        if (parishSection) {
+            parishSection.classList.toggle('parish-dark-mode');
+            const enabled = parishSection.classList.contains('parish-dark-mode');
+            localStorage.setItem('parishDarkMode', enabled ? 'enabled' : 'disabled');
+            setParishDarkModeUI(enabled);
+            console.log(enabled ? 'Parish dark mode enabled' : 'Parish dark mode disabled');
+        }
+    }
+
+    if (parishDarkModeToggle) {
+        parishDarkModeToggle.addEventListener('click', toggleParishDarkMode);
+    }
+
+    // Check for saved parish dark mode preference
+    if (localStorage.getItem('parishDarkMode') === 'enabled' && parishSection) {
+        parishSection.classList.add('parish-dark-mode');
+        setParishDarkModeUI(true);
+        console.log("Parish dark mode loaded from preferences");
+    } else {
+        setParishDarkModeUI(false);
+    }
+
     // Create stars
     createStars();
     console.log("Stars created");
@@ -251,29 +284,8 @@ document.addEventListener('DOMContentLoaded', function() {
         createStars();
     });
 
-    // Close menu when clicking on a nav link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Don't close menu for dropdown toggle on mobile
-            if (this.parentNode.classList.contains('dropdown') && window.innerWidth <= 767) {
-                return;
-            }
-            
-            if (hamburger) hamburger.classList.remove('active');
-            if (navMenu) navMenu.classList.remove('active');
-            
-            // Close any open dropdowns (for mobile)
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-            
-            // Update active link
-            document.querySelectorAll('.nav-link').forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-            link.classList.add('active');
-        });
-    });
+    // We've removed all nav-link click handling from here
+    // It's now moved to navigation.js to avoid conflicts
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -293,27 +305,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Highlight active section in navigation
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('.section, .hero');
-        let currentSection = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    });
+    // No automatic scroll-based active state changes
+    // Navigation highlighting is ONLY controlled by clicks
 
     // Remove preloader after page loads
     const preloader = document.getElementById('preloader');

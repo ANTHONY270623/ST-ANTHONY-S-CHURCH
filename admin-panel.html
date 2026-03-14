@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - St. Anthony's Church Green Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="threads-fix.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        .admin-header { 
+            display:flex; 
+            align-items:center; 
+            justify-content:space-between; 
+            gap:1rem; 
+            padding:1rem 1.25rem; 
+            background:var(--card-bg); 
+            border-bottom:1px solid rgba(0,0,0,0.08); 
+            position:sticky; 
+            top:0; 
+            z-index:10; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .admin-title { 
+            display:flex; 
+            align-items:center; 
+            gap:.75rem; 
+            font-weight:700; 
+        }
+        
+        .admin-title i { 
+            color: var(--primary-color); 
+        }
+        
+        .admin-actions { 
+            display:flex; 
+            align-items:center; 
+            gap:.5rem; 
+        }
+        
+        .admin-container { 
+            max-width: 1200px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+        
+        .stats-section { 
+            margin-bottom: 2rem; 
+        }
+        
+        .stats-section h3 { 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 1rem; 
+            margin-bottom: 2rem; 
+        }
+        
+        .stat-card { 
+            background: var(--card-bg); 
+            border-radius: 10px; 
+            padding: 1.5rem; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1); 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+            transition: transform 0.2s ease; 
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-card:hover { 
+            transform: translateY(-2px); 
+        }
+        
+        .stat-icon { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); 
+            color: white; 
+            font-size: 1.5rem; 
+        }
+        
+        .stat-icon.unread { 
+            background: linear-gradient(45deg, #ff6b6b, #ff8787); 
+        }
+        
+        .stat-info h4 { 
+            margin: 0; 
+            font-size: 1.8rem; 
+            font-weight: bold; 
+            color: var(--text-color); 
+        }
+        
+        .stat-info p { 
+            margin: 0; 
+            color: var(--text-secondary, #666); 
+            font-size: 0.9rem; 
+        }
+        
+        .cards { 
+            margin-bottom: 2rem; 
+        }
+        
+        .cards h3 { 
+            color: var(--primary-color); 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        
+        .cards-grid { 
+            display:grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); 
+            gap:1rem; 
+        }
+        
+        .card { 
+            background:var(--card-bg); 
+            border-radius:10px; 
+            padding:1.25rem; 
+            box-shadow:0 5px 15px rgba(0,0,0,0.08); 
+            transition: transform .15s ease; 
+            border: 1px solid var(--border-color); 
+        }
+        
+        .card:hover { 
+            transform: translateY(-2px); 
+        }
+        
+        .card h3 { 
+            display:flex; 
+            align-items:center; 
+            gap:.5rem; 
+            margin:0 0 .5rem; 
+            color: var(--primary-color); 
+        }
+        
+        .muted { 
+            color: var(--text-secondary, #666); 
+            font-size: .95rem; 
+            margin-bottom: 1rem; 
+        }
+        
+        .btn-outline { 
+            border:1px solid var(--primary-color); 
+            color:var(--primary-color); 
+            background:transparent; 
+            padding:.5rem .75rem; 
+            border-radius:8px; 
+            cursor:pointer; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            transition: all 0.3s ease; 
+        }
+        
+        .btn-outline:hover { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        
+        .btn-danger { 
+            background:#b00020; 
+            color:#fff; 
+            border:none; 
+            padding:.5rem .75rem; 
+            border-radius:8px; 
+            cursor:pointer; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            transition: all 0.3s ease;
+        }
+        
+        .btn-danger:hover {
+            background: #8b0015;
+        }
+        
+        .admin-toolbar { 
+            display:flex; 
+            gap:.5rem; 
+            flex-wrap:wrap; 
+            margin:1rem 0 1.25rem; 
+        }
+        
+        .toolbar-chip { 
+            background:rgba(0,0,0,0.05); 
+            padding:.35rem .6rem; 
+            border-radius:999px; 
+            font-size:.9rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.25rem; 
+        }
+        
+        .toolbar-chip.unread { 
+            background: rgba(255, 107, 107, 0.1); 
+            color: #ff6b6b; 
+            font-weight: 600; 
+        }
+        
+        .grid-actions { 
+            margin-top:.75rem; 
+            display:flex; 
+            gap:.5rem; 
+            flex-wrap:wrap; 
+        }
+        
+        .notice { 
+            margin: 1rem 0; 
+            padding:.75rem; 
+            border-radius:8px; 
+            background: rgba(25,135,84,.12); 
+            color:#0f5132; 
+            border-left: 4px solid #28a745;
+        }
+        
+        .access-denied {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .access-denied i {
+            font-size: 4rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+        
+        .access-denied h2 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        
+        .access-denied p {
+            color: var(--text-secondary, #666);
+            margin-bottom: 2rem;
+        }
+        
+        /* Dark mode button positioning for this page */
+        .dark-mode-toggle{position:fixed;right:16px;bottom:16px;z-index:1000}
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            }
+            .cards-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .admin-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Check if user is logged in -->
+    <div id="accessDenied" class="access-denied" style="display: none;">
+        <i class="fas fa-lock"></i>
+        <h2>Access Denied</h2>
+        <p>You must be logged in as an administrator to access this page.</p>
+        <a href="admin-login.html" class="btn-outline">
+            <i class="fas fa-sign-in-alt"></i> Go to Admin Login
+        </a>
+    </div>
+
+    <!-- Admin Dashboard Content -->
+    <div id="dashboardContent" style="display: none;">
+        <header class="admin-header">
+            <div class="admin-title">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin Dashboard</span>
+            </div>
+            <div class="admin-actions">
+                <span class="muted">
+                    <i class="fas fa-user"></i> 
+                    <span id="adminEmailDisplay"></span>
+                </span>
+                <a href="index.html" class="btn-outline" title="Home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <button id="logoutBtn" class="btn-danger" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <main class="admin-container">
+            <div class="notice">
+                <strong>Welcome!</strong> You are securely logged in to the admin panel. Here you can manage all church activities and communications.
+            </div>
+
+            <div class="admin-toolbar">
+                <span class="toolbar-chip">
+                    <i class="fas fa-user-shield"></i> Admin
+                </span>
+                <span class="toolbar-chip">
+                    <i class="fas fa-lock"></i> Session Active
+                </span>
+                <span class="toolbar-chip">
+                    <i class="fas fa-calendar"></i> 
+                    <span id="currentDate"></span>
+                </span>
+            </div>
+
+            <!-- Statistics Cards -->
+            <section class="stats-section">
+                <h3><i class="fas fa-chart-bar"></i> Dashboard Overview</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>24</h4>
+                            <p>Total Messages</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon unread">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>3</h4>
+                            <p>Unread Messages</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>156</h4>
+                            <p>Registered Members</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>5</h4>
+                            <p>Upcoming Events</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="cards">
+                <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                <div class="cards-grid">
+                    <article class="card">
+                        <h3><i class="fas fa-envelope-open-text"></i> Contact Messages</h3>
+                        <p class="muted">Review and manage messages submitted via the contact form.</p>
+                        <p style="color: #ff6b6b; font-weight: 600; margin: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-exclamation-triangle"></i> You have 3 unread messages!
+                        </p>
+                        <div class="grid-actions">
+                            <button class="btn-outline" onclick="alert('Contact messages feature - coming soon! This would show all messages from the contact form.')">
+                                <i class="fas fa-inbox"></i> View Messages
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <h3><i class="fas fa-users"></i> Member Management</h3>
+                        <p class="muted">View and manage church member registrations and details.</p>
+                        <div class="grid-actions">
+                            <button class="btn-outline" onclick="alert('Member management feature - coming soon! This would show all registered members.')">
+                                <i class="fas fa-users"></i> View Members
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <h3><i class="fas fa-bullhorn"></i> Church Announcements</h3>
+                        <p class="muted">Post or edit announcements shown on the homepage.</p>
+                        <div class="action-buttons">
+                            <a href="announcements-static.html" class="btn-outline">
+                                <i class="fas fa-plus"></i> Manage Announcements (Working)
+                            </a>
+                            <a href="announcements.php" class="btn-outline" style="opacity: 0.5;">
+                                <i class="fas fa-database"></i> PHP Version (Requires Server)
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <h3><i class="fas fa-calendar-alt"></i> Events Management</h3>
+                        <p class="muted">Schedule and manage church events, masses, and special occasions.</p>
+                        <div class="grid-actions">
+                            <a href="events-static.html" class="btn-outline">
+                                <i class="fas fa-plus"></i> Manage Events (Working)
+                            </a>
+                            <button class="btn-outline" onclick="alert('Events PHP version - coming soon!')" style="opacity: 0.5;">
+                                <i class="fas fa-database"></i> PHP Version (Requires Server)
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <h3><i class="fas fa-images"></i> Gallery Management</h3>
+                        <p class="muted">Upload and organize gallery images.</p>
+                        <div class="grid-actions">
+                            <button class="btn-outline" onclick="alert('Upload images feature - coming soon!')">
+                                <i class="fas fa-upload"></i> Upload Images
+                            </button>
+                            <button class="btn-outline" onclick="alert('Manage gallery feature - coming soon!')">
+                                <i class="fas fa-edit"></i> Manage Gallery
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <h3><i class="fas fa-cog"></i> Site Settings</h3>
+                        <p class="muted">Configure website settings and preferences.</p>
+                        <div class="grid-actions">
+                            <button class="btn-outline" onclick="alert('Site settings feature - coming soon!')">
+                                <i class="fas fa-cog"></i> Settings
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Check if admin is logged in
+        function checkAdminAuth() {
+            const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+            const adminEmail = sessionStorage.getItem('adminEmail');
+            
+            if (isLoggedIn === 'true' && adminEmail) {
+                // Show dashboard
+                document.getElementById('dashboardContent').style.display = 'block';
+                document.getElementById('accessDenied').style.display = 'none';
+                
+                // Display admin email
+                document.getElementById('adminEmailDisplay').textContent = adminEmail;
+                
+                // Set current date
+                const now = new Date();
+                document.getElementById('currentDate').textContent = now.toLocaleDateString();
+                
+            } else {
+                // Show access denied
+                document.getElementById('dashboardContent').style.display = 'none';
+                document.getElementById('accessDenied').style.display = 'block';
+            }
+        }
+        
+        // Logout function
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to logout?')) {
+                // Clear session
+                sessionStorage.removeItem('adminLoggedIn');
+                sessionStorage.removeItem('adminEmail');
+                
+                // Redirect to login
+                window.location.href = 'admin-login.html';
+            }
+        });
+        
+        // Check auth on page load
+        document.addEventListener('DOMContentLoaded', checkAdminAuth);
+    </script>
+</body>
+</html>

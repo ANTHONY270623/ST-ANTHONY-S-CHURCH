@@ -1,0 +1,147 @@
+/* Simple Forms Section Fix - Clean and Minimal */
+
+/* Ensure forms section is visible and accessible */
+#forms {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    clear: both;
+}
+
+#forms h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.forms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.form-card {
+    background: var(--card-bg);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color); /* Add consistent left border to all */
+}
+
+.form-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139,69,19,0.12);
+}
+
+/* Make all form icons consistent */
+.form-card .form-icon {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(139,69,19,0.2);
+}
+
+.form-card .form-icon img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Form card titles and text */
+.form-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.form-card p {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Form action buttons styling */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.form-actions .btn-primary,
+.form-actions .btn-secondary,
+.form-actions .btn-outline {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.form-actions .btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.form-actions .btn-primary:hover {
+    background: var(--primary-hover, #A0522D);
+    transform: translateY(-2px);
+}
+
+.form-actions .btn-secondary {
+    background: #666666;
+    color: white;
+}
+
+.form-actions .btn-secondary:hover {
+    background: #777777;
+    transform: translateY(-2px);
+}
+
+.form-actions .btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.form-actions .btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .forms-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .form-card {
+        padding: 1.5rem 1rem;
+    }
+}

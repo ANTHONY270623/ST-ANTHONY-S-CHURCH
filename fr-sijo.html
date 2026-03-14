@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="threads-fix.css">
     <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="dark-mode-fixes.css">
     <style>
         .admin-profile {
             max-width: 1000px;
@@ -83,6 +84,11 @@
     </style>
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Back to Home Link -->
     <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
@@ -124,5 +130,39 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Dark Mode Toggle functionality for priest detail page
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+
+            function setDarkModeUI(enabled) {
+                if (darkModeToggle) {
+                    darkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                }
+            }
+
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                const enabled = document.body.classList.contains('dark-mode');
+                localStorage.setItem('priestPageDarkMode', enabled ? 'enabled' : 'disabled');
+                setDarkModeUI(enabled);
+                console.log(enabled ? 'Dark mode enabled on priest page' : 'Dark mode disabled on priest page');
+            }
+
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', toggleDarkMode);
+            }
+
+            // Check for saved dark mode preference
+            if (localStorage.getItem('priestPageDarkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                setDarkModeUI(true);
+                console.log("Dark mode loaded from preferences on priest page");
+            } else {
+                setDarkModeUI(false);
+            }
+        });
+    </script>
 </body>
 </html>

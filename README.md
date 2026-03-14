@@ -4,16 +4,55 @@ This is the website for St. Anthony's Church located in Green Park. The website 
 
 ## Project Structure
 
-- `index.html` - Main page of the website
-- `style.css` - Main stylesheet for the website
-- `threads-fix.css` - Custom CSS for Threads social media icon
-- `responsive.css` - Enhanced responsive design for mobile and tablet devices
-- `gallery.css` - Styles for gallery lightbox and image viewer
-- `script.js` - JavaScript functionality for the website
-- `fr-sebastian.html` - Profile page for Fr. Sebastian Vadakkekattezhathu
-- `fr-sijo.html` - Profile page for Fr. Sijo Nadakkan
-- `council-member.html` - Template profile page for council members
-- `jane-smith.html` - Profile page for council vice president Jane Smith
+
+### Contact form and admin inbox
+
+- The page `contact.html` now posts to `contact_submit.php`.
+- Submissions are stored in MySQL table `contact_messages` (auto-created) in DB `church_project`.
+- Admin can review messages in `admin-inbox.php` (requires login via `admin-login.php`).
+- By default, the site attempts to email the admin address defined in `config.php` via PHP `mail()`.
+
+Email options:
+- For local XAMPP, `mail()` may need configuration; if email fails, messages are still saved and visible in the inbox.
+- Optional SMTP: fill out values in `config.php` and switch to SMTP by setting `ENABLE_SMTP` to true, then install PHPMailer under `vendor/PHPMailer/` and update the handler as needed.
+
+Database:
+- Defaults to MySQL on `127.0.0.1` with user `root`/empty password. Adjust in `config.php`.
+- The database and table are created on first request.
+
+#### Enabling email sending on Windows (XAMPP)
+
+PHP `mail()` on Windows relies on an external SMTP relay. With XAMPP, configure `sendmail`:
+
+1) Edit `C:\xampp\sendmail\sendmail.ini`
+
+Set these values (example for Gmail with an app password):
+
+```
+smtp_server=smtp.gmail.com
+smtp_port=587
+smtp_ssl=auto
+auth_username=YOUR_GMAIL_ADDRESS@gmail.com
+auth_password=YOUR_APP_PASSWORD
+force_sender=YOUR_GMAIL_ADDRESS@gmail.com
+```
+
+2) Edit `C:\xampp\php\php.ini`
+
+Uncomment and set the sendmail path:
+
+```
+; For Win32 only.
+sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
+```
+
+3) Restart Apache from XAMPP Control Panel.
+
+4) Test: Visit `contact.html`, submit a message, and check the Gmail inbox/spam.
+
+Notes:
+- Gmail requires an App Password (enable 2FA, then create an app password). Using your main Gmail password will not work.
+- Our handler now uses `From: Church Website <ADMIN_EMAIL>` and sets `Reply-To` to the sender to improve deliverability.
 
 ## Features
 

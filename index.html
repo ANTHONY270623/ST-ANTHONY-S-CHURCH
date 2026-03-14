@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#8b0000">
+    <!-- Removed meta theme-color tags to avoid unsupported browser errors -->
+    <!-- Fallbacks for browsers that do not support theme-color -->
+    <meta name="msapplication-navbutton-color" content="#8b0000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="color-scheme" content="light dark">
+    <meta name="msapplication-TileColor" content="#8b0000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#8b0000">
+    <meta name="format-detection" content="telephone=no">
     <title>St. Anthony's Church Green Park</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="threads-fix.css">
     <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="gallery.css">
-    <link rel="stylesheet" href="mobile-enhancements.css">
-    <link rel="stylesheet" href="extracted-styles.css">
-    <link rel="stylesheet" href="dark-mode-fixes.css">
     <link rel="stylesheet" href="visual-enhancements.css">
-    <link rel="stylesheet" href="simplified-church-name.css">
+    <link rel="stylesheet" href="simple-forms-fix.css">
+    <link rel="stylesheet" href="dynamic-gallery.css">
+    <link rel="stylesheet" href="church-name-enhancement.css">
+    <link rel="stylesheet" href="forms-enhanced.css">
+    <link rel="stylesheet" href="event-poster-styles.css">
 </head>
 <body>
     <!-- Page Preloader -->
@@ -50,6 +56,7 @@
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> HOME</a></li>
+                <li><a href="#more-about" class="nav-link"><i class="fas fa-info-circle"></i> MORE ABOUT</a></li>
                 <li><a href="#about" class="nav-link"><i class="fas fa-church"></i> ABOUT</a></li>
                 <li><a href="#parish" class="nav-link"><i class="fas fa-users"></i> PARISH ADMIN</a></li>
                 <li><a href="#prayer" class="nav-link"><i class="fas fa-pray"></i> PRAYER TIMES</a></li>
@@ -78,7 +85,7 @@
                         <a href="#communion-form"><i class="fas fa-bread-slice"></i> Communion Form</a>
                         <a href="#confirmation-form"><i class="fas fa-dove"></i> Confirmation Form</a>
                         <a href="#marriage-form"><i class="fas fa-ring"></i> Marriage Form</a>
-                        <a href="#burial-form"><i class="fas fa-cross"></i> Burial Form</a>
+                        <a href="#burial-form">Burial Form</a>
                         <a href="#family-form"><i class="fas fa-users"></i> Family Details Form</a>
                     </div>
                 </li>
@@ -149,21 +156,6 @@
                 <p><strong>Email:</strong> greenparkchurch25@gmail.com</p>
                 <p><strong>Telephone:</strong> 7025727541</p>
                 
-                <div class="service-counter">
-                    <div class="counter-item">
-                        <div class="counter-value" data-count="8">0</div>
-                        <div class="counter-label">Years of Service</div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="counter-value" data-count="500">0</div>
-                        <div class="counter-label">Community Members</div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="counter-value" data-count="100">0</div>
-                        <div class="counter-label">Events Hosted</div>
-                    </div>
-                </div>
-                
                 <h3 class="patron-saint-header">PATRON SAINT AND FEASTS</h3>
                 <p><strong>Patron saint:</strong> St. Anthony</p>
                 <p><strong>Main Feast of the Parish:</strong> Mother Mary Immaculate</p>
@@ -203,7 +195,7 @@
                     <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Fr. Sebastian" class="profile-image">
                 </div>
                 <h3>Fr. Sebastain Vadakkekattezhathu OFM CONVENTUAL</h3>
-                <p
+                <p>Parish Priest</p>
                 <p><small>Click to view details</small></p>
             </div>
             <div class="priest-card clickable-card" onclick="window.location.href='fr-sijo.html';">
@@ -237,47 +229,36 @@
     <!-- Updates Section -->
     <section id="updates" class="section">
         <h2>UPDATES</h2>
+        <div class="refresh-button-container">
+            <button onclick="if(window.announcementsReader) window.announcementsReader.forceRefresh()" 
+                    class="refresh-button">
+                🔄 Refresh Announcements
+            </button>
+        </div>
         <div class="updates-ticker">
             <div class="ticker-content">
-                UPDATE 1:  ON 27th JULY 2025 (SUNDAY) MASS WILL BE ON NEW CHAPEL.
-                UPDATE 2:  HOUSE BLESSINGS ARE GOING ON PLEASE CONTACT COUNCIL MEMBERS.
-                UPDATE 3:  FR SEBASTAIN WIL BE NOT AVAILABLE FOR ONE WEEK.
+                Loading announcements...
             </div>
         </div>
         <div class="announcements">
-            <p class="announcement-item"> 1. ON 27th JULY 2025 (SUNDAY) MASS WILL BE ON NEW CHAPEL.</p>
-            <p class="announcement-item"> 2. HOUSE BLESSINGS ARE GOING ON PLEASE CONTACT COUNCIL MEMBERS.</p>
-            <p class="announcement-item"> 3. FR SEBASTIAN WILL NOT BE AVAILABLE FOR ONE WEEK.</p>
+            <p class="announcement-item">Loading announcements from admin panel...</p>
         </div>
     </section>
     
     <!-- Upcoming Events Section -->
     <section id="events" class="section">
         <h2>UPCOMING EVENTS</h2>
+        <div class="refresh-button-container">
+            <button onclick="if(window.eventsReader) window.eventsReader.forceRefresh()" 
+                    class="refresh-button secondary">
+                🔄 Refresh Events
+            </button>
+        </div>
         <div class="forms-grid">
             <div class="form-card">
                 <div class="form-icon"><i class="fas fa-calendar-alt"></i></div>
-                <h3>THE ASSUMPTION OF MARY</h3>
-                <p>August 15, 2025</p>
-                <p>Special mass and community celebration</p>
-            </div>
-            <div class="form-card">
-                <div class="form-icon"><i class="fas fa-music"></i></div>
-                <h3>Church Choir Competition</h3>
-                <p>September 3, 2025</p>
-                <p>Parish hall at 4:00 PM</p>
-            </div>
-            <div class="form-card">
-                <div class="form-icon"><i class="fas fa-hands-helping"></i></div>
-                <h3>Charity Drive</h3>
-                <p>September 10, 2025</p>
-                <p>Donations for local orphanage</p>
-            </div>
-            <div class="form-card">
-                <div class="form-icon"><i class="fas fa-bible"></i></div>
-                <h3>Bible Study Group</h3>
-                <p>Every Wednesday</p>
-                <p>6:00 PM at Parish Hall</p>
+                <h3>Loading Events...</h3>
+                <p>Events will be loaded from admin panel...</p>
             </div>
         </div>
     </section>
@@ -285,57 +266,70 @@
     <!-- Gallery Section -->
     <section id="gallery" class="section">
         <h2>CHURCH GALLERY</h2>
-        <div class="gallery-section">
-            <h3 class="gallery-header">ST ANTHONY'S FEAST DAY PHOTOS</h3>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Congregation seated in church pews during a feast celebration with sunlight streaming through stained glass windows in a peaceful and reverent atmosphere; the church interior is filled with warm light and a sense of community">
+        
+        <!-- Dynamic Gallery from Google Drive -->
+        <div id="dynamic-gallery" class="dynamic-gallery">
+            <div class="gallery-loading">
+                <i class="fas fa-spinner"></i>
+                <p>Loading gallery from Google Drive...</p>
+            </div>
+        </div>
+        
+        <!-- Static Gallery (fallback) -->
+        <div id="static-gallery" class="static-gallery-hidden">
+            <div class="gallery-section">
+                <h3 class="gallery-header">ST ANTHONY'S FEAST DAY PHOTOS</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Congregation seated in church pews during a feast celebration with sunlight streaming through stained glass windows in a peaceful and reverent atmosphere; the church interior is filled with warm light and a sense of community">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544830289-5a5b9a7fcfb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1544830289-5a5b9a7fcfb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+            </div>
+            <div class="gallery-section">
+                <h3 class="gallery-header">EASTER SUNDAY IMAGES</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1520106212299-d99c443e4568?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Church Feast">
+            </div>
+            <div class="gallery-section">
+                <h3 class="gallery-header">GOOD FRIDAY IMAGES</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="gallery-section">
-            <h3 class="gallery-header">EASTER SUNDAY IMAGES</h3>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Easter">
-                </div>
-            </div>
-        </div>
-        <div class="gallery-section">
-            <h3 class="gallery-header">GOOD FRIDAY IMAGES</h3>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Good Friday">
-                </div>
-            </div>
-        </div>
+    </section>
     </section>
 
     <!-- Council Members Section -->
@@ -344,65 +338,41 @@
         <div class="council-grid">
             <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
                 <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="John Doe" class="profile-image">
+                    <img src="councilmember1.jpg" alt="SUMITRA" class="profile-image">
                 </div>
-                <h4>John Doe</h4>
+                <h4>SUMITRA</h4>
                 <p class="council-position">President</p>
                 <p><small>Click for details</small></p>
             </div>
             <div class="council-card clickable-card" onclick="window.location.href='jane-smith.html';">
                 <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Jane Smith" class="profile-image">
+                    <img src="councilmember2.jpg" alt="PRAKASH" class="profile-image">
                 </div>
-                <h4>Jane Smith</h4>
+                <h4>PRAKASH</h4>
                 <p class="council-position">Vice President</p>
                 <p><small>Click for details</small></p>
             </div>
-            <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
+            <div class="council-card clickable-card" onclick="window.location.href='subhas-details.html';">
                 <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Robert Johnson" class="profile-image">
+                    <img src="councilmember3.jpg" alt="SUBHAS" class="profile-image">
                 </div>
-                <h4>Robert Johnson</h4>
+                <h4>SUBHAS</h4>
                 <p class="council-position">Secretary</p>
                 <p><small>Click for details</small></p>
             </div>
-            <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
+            <div class="council-card clickable-card" onclick="window.location.href='sanju-details.html';">
                 <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Mary Williams" class="profile-image">
+                    <img src="councilmember4.jpg" alt="SANJU" class="profile-image">
                 </div>
-                <h4>Mary Williams</h4>
+                <h4>SANJU</h4>
                 <p class="council-position">Treasurer</p>
                 <p><small>Click for details</small></p>
             </div>
-            <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
+            <div class="council-card clickable-card" onclick="window.location.href='tarun-details.html';">
                 <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Michael Brown" class="profile-image">
+                    <img src="councilmember5.jpg" alt="TARUN" class="profile-image">
                 </div>
-                <h4>Michael Brown</h4>
-                <p class="council-position">Member</p>
-                <p><small>Click for details</small></p>
-            </div>
-            <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
-                <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Sarah Davis" class="profile-image">
-                </div>
-                <h4>Sarah Davis</h4>
-                <p class="council-position">Member</p>
-                <p><small>Click for details</small></p>
-            </div>
-            <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
-                <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="David Wilson" class="profile-image">
-                </div>
-                <h4>David Wilson</h4>
-                <p class="council-position">Member</p>
-                <p><small>Click for details</small></p>
-            </div>
-            <div class="council-card clickable-card" onclick="window.location.href='council-member.html';">
-                <div class="council-image">
-                    <img src="https://i.postimg.cc/xTXyLDMr/Whats-App-Image-2025-07-06-at-15-05-29-641b354b.jpg" alt="Lisa Moore" class="profile-image">
-                </div>
-                <h4>Lisa Moore</h4>
+                <h4>TARUN</h4>
                 <p class="council-position">Member</p>
                 <p><small>Click for details</small></p>
             </div>
@@ -436,7 +406,7 @@
             </div>
             <div class="contact-form">
                 <h3 class="contact-header">Send Us a Message</h3>
-                <form id="contactForm" method="POST" action="simple-contact.php">
+                <form id="contactForm" method="POST" action="contact-process-enhanced.php">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
@@ -454,6 +424,10 @@
                     </div>
                     <button type="submit" class="btn-primary">Send Message</button>
                 </form>
+                <div id="contact-success-message" class="success-message">
+                    Thank you for your message! We have received your inquiry and will get back to you soon.
+                </div>
+                <div id="contact-error-message" class="error-message"></div>
                 <div id="form-status"></div>
             </div>
         </div>
@@ -480,39 +454,368 @@
         <h2>DOWNLOAD FORM</h2>
         <div class="forms-grid">
             <div class="form-card" id="baptism-form">
-                <div class="form-icon"><i class="fas fa-baby"></i></div>
+                <div class="form-icon">
+                    <img src="Jesus-baptized.webp" alt="Jesus Baptism" class="baptism-form-logo">
+                </div>
                 <h3>Baptism Form</h3>
-                <p>Download baptism certificate form</p>
+                <p>Download and print the baptism certificate form</p>
+                <div class="form-actions">
+                    <a href="baptism-form.pdf" class="btn-primary" download="Baptism-Form.pdf">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button onclick="printBaptismForm()" class="btn-secondary">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button onclick="viewBaptismForm()" class="btn-outline">
+                        <i class="fas fa-eye"></i> View Form
+                    </button>
+                </div>
             </div>
             <div class="form-card" id="communion-form">
-                <div class="form-icon"><i class="fas fa-bread-slice"></i></div>
-                <h3>First Holy Communion</h3>
-                <p>Download communion form</p>
+                <div class="form-icon">
+                    <img src="First-Communion.jpg" alt="First Holy Communion" class="communion-form-logo">
+                </div>
+                <h3>First Holy Communion Form</h3>
+                <p>Download and print the communion form</p>
+                <div class="form-actions">
+                    <a href="communion-form.pdf" class="btn-primary" download="Communion-Form.pdf">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button onclick="printCommunionForm()" class="btn-secondary">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button onclick="viewCommunionForm()" class="btn-outline">
+                        <i class="fas fa-eye"></i> View Form
+                    </button>
+                </div>
             </div>
             <div class="form-card" id="confirmation-form">
-                <div class="form-icon"><i class="fas fa-dove"></i></div>
+                <div class="form-icon">
+                    <img src="CONFIRMATION.jpg" alt="Confirmation Ceremony" class="confirmation-form-logo">
+                </div>
                 <h3>Confirmation Form</h3>
-                <p>Download confirmation form</p>
+                <p>Download and print the confirmation form</p>
+                <div class="form-actions">
+                    <a href="confirmation-form.pdf" class="btn-primary" download="Confirmation-Form.pdf">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button onclick="printConfirmationForm()" class="btn-secondary">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button onclick="viewConfirmationForm()" class="btn-outline">
+                        <i class="fas fa-eye"></i> View Form
+                    </button>
+                </div>
             </div>
             <div class="form-card" id="marriage-form">
-                <div class="form-icon"><i class="fas fa-ring"></i></div>
+                <div class="form-icon">
+                    <img src="MARRIAGE.jpg" alt="Wedding Ceremony" class="marriage-form-logo">
+                </div>
                 <h3>Marriage Form</h3>
-                <p>Download marriage certificate form</p>
+                <p>Download and print the marriage certificate form</p>
+                <div class="form-actions">
+                    <a href="marriage-form.pdf" class="btn-primary" download="Marriage-Form.pdf">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button onclick="printMarriageForm()" class="btn-secondary">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button onclick="viewMarriageForm()" class="btn-outline">
+                        <i class="fas fa-eye"></i> View Form
+                    </button>
+                </div>
             </div>
             <div class="form-card" id="burial-form">
-                <div class="form-icon"><i class="fas fa-cross"></i></div>
+                <div class="form-icon">
+                    <img src="Cemetery.jpg" alt="Cemetery Memorial" class="burial-form-logo">
+                </div>
                 <h3>Burial Form</h3>
-                <p>Download burial certificate form</p>
+                <p>Download and print the burial certificate form</p>
+                <div class="form-actions">
+                    <a href="burial-form.pdf" class="btn-primary" download="Burial-Form.pdf">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button onclick="printBurialForm()" class="btn-secondary">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button onclick="viewBurialForm()" class="btn-outline">
+                        <i class="fas fa-eye"></i> View Form
+                    </button>
+                </div>
             </div>
             <div class="form-card" id="family-form">
-                <div class="form-icon"><i class="fas fa-users"></i></div>
+                <div class="form-icon">
+                    <img src="Family.jpg" alt="Family with Cross" class="family-form-logo">
+                </div>
                 <h3>Family Details Form</h3>
-                <p>Download family registration form</p>
+                <p>Download and print the family registration form</p>
+                <div class="form-actions">
+                    <a href="family-form.pdf" class="btn-primary" download="Family-Details-Form.pdf">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button onclick="printFamilyForm()" class="btn-secondary">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button onclick="viewFamilyForm()" class="btn-outline">
+                        <i class="fas fa-eye"></i> View Form
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
+        <!-- Main JavaScript -->
     <script src="script.js"></script>
-    <script src="scroll-animations.js"></script>
+    <script src="mobile-viewport-fix.js"></script>
+    <script src="contact-form.js"></script>
+    <script src="navigation.js"></script>
+    <script src="forms-navigation.js"></script>
+    <script src="announcements-reader.js"></script>
+    <script src="events-reader.js"></script>
+    <script>
+        // Initialize dynamic content readers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize announcements reader
+            if (typeof AnnouncementsReader !== 'undefined') {
+                window.announcementsReader = new AnnouncementsReader();
+                console.log('Announcements reader initialized');
+            }
+            
+            // Initialize events reader
+            if (typeof EventsReader !== 'undefined') {
+                window.eventsReader = new EventsReader();
+                console.log('Events reader initialized');
+            }
+            
+            // Initialize contact form
+            if (typeof initContactForm === 'function') {
+                initContactForm();
+            }
+        });
+
+        // Baptism Form Functions
+        function printBaptismForm() {
+            // Open PDF in new window for printing
+            const printWindow = window.open('baptism-form.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            } else {
+                alert('Please allow pop-ups to print the form. You can also download and print manually.');
+            }
+        }
+
+        function viewBaptismForm() {
+            // Open PDF in new tab for viewing
+            window.open('baptism-form.pdf', '_blank');
+        }
+
+        // Success notification for download
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadLink = document.querySelector('a[download="Baptism-Form.pdf"]');
+            if (downloadLink) {
+                downloadLink.addEventListener('click', function() {
+                    setTimeout(function() {
+                        showFormNotification('Baptism form downloaded successfully! You can now print it.', 'success');
+                    }, 500);
+                });
+            }
+        });
+
+        function showFormNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : '#dc3545'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 10000;
+                font-weight: 600;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 4 seconds
+            setTimeout(function() {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(function() {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 4000);
+        }
+
+        // Communion form functions
+        function printCommunionForm() {
+            const printWindow = window.open('communion-form.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            } else {
+                alert('Please allow pop-ups to print the form. You can also download and print manually.');
+            }
+        }
+
+        function viewCommunionForm() {
+            window.open('communion-form.pdf', '_blank');
+        }
+
+        // Confirmation form functions
+        function printConfirmationForm() {
+            const printWindow = window.open('confirmation-form.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            } else {
+                alert('Please allow pop-ups to print the form. You can also download and print manually.');
+            }
+        }
+
+        function viewConfirmationForm() {
+            window.open('confirmation-form.pdf', '_blank');
+        }
+
+        // Marriage form functions
+        function printMarriageForm() {
+            const printWindow = window.open('marriage-form.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            } else {
+                alert('Please allow pop-ups to print the form. You can also download and print manually.');
+            }
+        }
+
+        function viewMarriageForm() {
+            window.open('marriage-form.pdf', '_blank');
+        }
+
+        // Burial form functions
+        function printBurialForm() {
+            const printWindow = window.open('burial-form.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            } else {
+                alert('Please allow pop-ups to print the form. You can also download and print manually.');
+            }
+        }
+
+        function viewBurialForm() {
+            window.open('burial-form.pdf', '_blank');
+        }
+
+        // Family form functions
+        function printFamilyForm() {
+            const printWindow = window.open('family-form.pdf', '_blank');
+            if (printWindow) {
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            } else {
+                alert('Please allow pop-ups to print the form. You can also download and print manually.');
+            }
+        }
+
+        function viewFamilyForm() {
+            window.open('family-form.pdf', '_blank');
+        }
+
+        // Event Poster Functions
+        function showEventPoster(eventId) {
+            if (window.eventsReader) {
+                const event = window.eventsReader.getEventById(eventId);
+                if (event && event.poster) {
+                    const modal = document.getElementById('eventPosterModal');
+                    const modalTitle = document.getElementById('eventPosterModalTitle');
+                    const modalImage = document.getElementById('eventPosterModalImage');
+                    const modalPdf = document.getElementById('eventPosterModalPdf');
+                    
+                    modalTitle.textContent = `${event.title} - Poster`;
+                    
+                    if (event.poster.fileType.startsWith('image/')) {
+                        modalImage.src = event.poster.data;
+                        modalImage.classList.add('show');
+                        modalPdf.classList.remove('show');
+                    } else if (event.poster.fileType === 'application/pdf') {
+                        modalPdf.src = event.poster.data;
+                        modalPdf.classList.add('show');
+                        modalImage.classList.remove('show');
+                    }
+                    
+                    modal.classList.add('show');
+                    
+                    // Close modal when clicking outside
+                    modal.onclick = (e) => {
+                        if (e.target === modal) {
+                            closeEventPosterModal();
+                        }
+                    };
+                }
+            }
+        }
+
+        function closeEventPosterModal() {
+            const modal = document.getElementById('eventPosterModal');
+            const modalImage = document.getElementById('eventPosterModalImage');
+            const modalPdf = document.getElementById('eventPosterModalPdf');
+            
+            modal.classList.remove('show');
+            modalImage.classList.remove('show');
+            modalPdf.classList.remove('show');
+            modalImage.src = '';
+            modalPdf.src = '';
+        }
+    </script>
+
+    <!-- Event Poster Modal -->
+    <div id="eventPosterModal" class="event-poster-modal">
+        <div class="event-poster-modal-content">
+            <div class="event-poster-modal-header">
+                <h3 id="eventPosterModalTitle">Event Poster</h3>
+                <button class="event-poster-modal-close" onclick="closeEventPosterModal()" title="Close poster">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="event-poster-modal-body">
+                <img id="eventPosterModalImage" class="event-poster-modal-img" alt="Event poster">
+                <iframe id="eventPosterModalPdf" class="event-poster-modal-pdf" title="Event poster PDF"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script src="drive-gallery-loader.js"></script>
 </body>
 </html>

@@ -1,0 +1,83 @@
+/* Special fix for Thread icon in contact section */
+.social-links a[title="Threads"] {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.social-links a[title="Threads"]:hover {
+    background-color: #333 !important;
+    color: var(--secondary-color) !important;
+}
+
+.social-links a[title="Threads"] i.fab.fa-threads {
+    font-size: 20px;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Force show all social icons */
+.social-links a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: var(--secondary-color);
+}
+
+/* Dark mode adjustments */
+.dark-mode .social-links a[title="Threads"] {
+    background-color: #222 !important;
+}
+
+.dark-mode .social-links a[title="Threads"]:hover {
+    background-color: #444 !important;
+}
+
+/* Make all links in the contact section visible and well-formatted */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-media-header {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+/* Mobile optimization for social links */
+@media (max-width: 767px) {
+    .social-links {
+        gap: 10px;
+    }
+    
+    .social-links a {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+}

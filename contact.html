@@ -17,6 +17,7 @@
             background-color: #f5f5f5;
             color: #333;
         }
+        .form-alert { display:none; margin-bottom:12px; padding:10px; border-radius:6px; }
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -98,7 +99,8 @@
         <h1>Contact St. Anthony's Church</h1>
         <p>Use this form to send us a message directly.</p>
         
-        <form action="#" method="POST" onsubmit="alert('Backend form processing has been removed. Please use the email link below.'); return false;">
+    <div id="form-alert" class="form-alert"></div>
+    <form action="contact_submit.php" method="POST">
             <div class="form-group">
                 <label for="name">Your Name *</label>
                 <input type="text" id="name" name="name" required>
@@ -144,5 +146,33 @@
         
         <a href="index.html" class="back-link">← Back to Home Page</a>
     </div>
+    <script>
+        // Show a friendly status message after redirect
+        (function(){
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+            if(!status) return;
+            const box = document.getElementById('form-alert');
+            let text = '';
+            let bg = '#d1e7dd', color = '#0f5132', border = '1px solid #badbcc';
+            if (status === 'ok') {
+                text = 'Thank you! Your message was sent successfully.';
+            } else if (status === 'saved') {
+                text = "We've saved your message and will review it shortly. Email notification couldn't be sent.";
+                bg = '#fff3cd'; color = '#664d03'; border = '1px solid #ffecb5';
+            } else if (status === 'error') {
+                text = 'Sorry, there was a problem sending your message. Please try again or use the email link below.';
+                bg = '#f8d7da'; color = '#842029'; border = '1px solid #f5c2c7';
+            } else if (status === 'invalid') {
+                text = 'Invalid request. Please submit the form again.';
+                bg = '#f8d7da'; color = '#842029'; border = '1px solid #f5c2c7';
+            }
+            if (text) {
+                box.textContent = text;
+                box.style.display = 'block';
+                box.style.background = bg; box.style.color = color; box.style.border = border;
+            }
+        })();
+    </script>
 </body>
 </html>

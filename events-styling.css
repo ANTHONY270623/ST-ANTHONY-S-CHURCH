@@ -1,0 +1,42 @@
+/* Events Styling Enhancement */
+.today-event {
+    border-left: 4px solid #ffc107 !important;
+    background: linear-gradient(135deg, #fff8e1, #fffbf0) !important;
+}
+
+.event-date {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.event-time {
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.event-location {
+    font-style: italic;
+    color: var(--text-secondary, #666);
+    margin-bottom: 0.5rem;
+}
+
+.event-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.form-card .event-date i,
+.form-card .event-time i,
+.form-card .event-location i {
+    margin-right: 0.5rem;
+    width: 16px;
+    text-align: center;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .today-event {
+    background: linear-gradient(135deg, #2d2416, #3d3020) !important;
+    border-left-color: #ffc107 !important;
+}

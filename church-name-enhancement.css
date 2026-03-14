@@ -1,17 +1,13 @@
 /* Enhanced Church Name Display */
 .church-name-fixed {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
     text-align: center;
     width: auto;
-    background-color: rgba(0, 0, 0, 0.4);
     padding: 20px 40px;
-    border-radius: 10px;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
 }
 
 .church-name-fixed h1 {
@@ -54,7 +50,6 @@
 
 /* Dark mode adjustments */
 .dark-mode .church-name-fixed {
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .dark-mode .church-name-fixed h1 {
@@ -133,9 +128,6 @@
 
 /* Dark mode adjustments */
 .dark-mode .church-name-fixed {
-    background-color: rgba(30, 30, 30, 0.7);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .dark-mode .church-name-fixed h1 {
@@ -187,7 +179,6 @@
 
 /* Dark mode enhancements */
 .dark-mode .church-name-fixed {
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .dark-mode .church-decoration {
@@ -224,4 +215,27 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media (max-width: 767px) {
+    .hero {
+        height: 100vh;
+        height: 100svh;
+        min-height: 100vh;
+        min-height: 100svh;
+    }
+
+    .slideshow-container,
+    .slide {
+        height: 100%;
+        background-color: #000;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center center;
+        transform: none;
+    }
 }
