@@ -290,6 +290,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            const isMobileDropdownToggle =
+                window.innerWidth <= 767 &&
+                this.parentElement &&
+                this.parentElement.classList.contains('dropdown') &&
+                this.nextElementSibling &&
+                this.nextElementSibling.classList.contains('dropdown-content');
+
+            if (isMobileDropdownToggle) {
+                return;
+            }
+
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
@@ -297,6 +308,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                if (hamburger && navMenu && navMenu.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+
                 window.scrollTo({
                     top: targetElement.offsetTop - 70,
                     behavior: 'smooth'
