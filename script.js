@@ -69,14 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeSwitch = document.getElementById('darkModeSwitch');
 
     function setDarkModeUI(enabled) {
         if (darkModeToggle) {
             darkModeToggle.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        }
-        if (darkModeSwitch) {
-            darkModeSwitch.checked = enabled;
         }
     }
 
@@ -91,9 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', toggleDarkMode);
-    }
-    if (darkModeSwitch) {
-        darkModeSwitch.addEventListener('change', toggleDarkMode);
     }
 
     // Check for saved dark mode preference
