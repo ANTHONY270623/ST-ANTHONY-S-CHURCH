@@ -109,7 +109,11 @@
     /* Adjust hero section for mobile */
     .hero {
         height: 100vh;
-        padding-top: 70px;
+        height: 100svh;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative;
+        overflow: hidden;
     }
     
     .hero-content {

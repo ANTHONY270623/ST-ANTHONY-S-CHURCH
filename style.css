@@ -313,13 +313,19 @@ a .fas.fa-cross,
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: 1;
     overflow: hidden;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slide {
     display: none;
     height: 100%;
+    width: 100%;
     position: relative;
     transition: opacity 1s ease;
+    background-color: #000;
 }
 
 .slideshow-container .slide:first-child {
@@ -334,14 +340,16 @@ a .fas.fa-cross,
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.2); /* Reduced darkness to show more of the background */
+    pointer-events: none;
+    z-index: 2;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Always cover the viewport */
+    object-fit: contain; /* Show the whole image */
     object-position: center; /* Center the image */
-    transform: scale(1.03); /* Slightly scale up to avoid potential edges during transitions */
+    background-color: #000; /* Black background for letterboxing */
 }
 
 .fade {
