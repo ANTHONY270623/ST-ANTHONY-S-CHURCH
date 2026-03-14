@@ -322,6 +322,10 @@ a .fas.fa-cross,
     transition: opacity 1s ease;
 }
 
+.slideshow-container .slide:first-child {
+    display: block;
+}
+
 .slide::after {
     content: '';
     position: absolute;
