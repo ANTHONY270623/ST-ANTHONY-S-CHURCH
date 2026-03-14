@@ -661,6 +661,10 @@ a .fas.fa-cross,
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .priest-card:hover {
@@ -680,12 +684,14 @@ a .fas.fa-cross,
     color: #666;
     border: 3px solid var(--secondary-color);
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .priest-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* Modal */
@@ -801,6 +807,10 @@ a .fas.fa-cross,
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
     min-height: 280px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .council-card:hover {
@@ -820,12 +830,14 @@ a .fas.fa-cross,
     color: #666;
     border: 3px solid var(--secondary-color);
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .council-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .council-position {
