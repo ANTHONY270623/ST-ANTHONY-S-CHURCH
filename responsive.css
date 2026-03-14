@@ -564,7 +564,9 @@ a, button {
     .home-ticker {
         position: relative;
         bottom: 0;
-        padding: 8px 0;
+        padding: 12px 0;
+        background: rgba(139, 69, 19, 0.9);
+        z-index: 5;
     }
     
     .ticker-content {
@@ -1566,7 +1568,9 @@ body {
     }
 
     .home-ticker .ticker-content {
-        animation: scroll 30s linear infinite;
+        animation: scroll 40s linear infinite;
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 
     .updates-ticker .ticker-content {
