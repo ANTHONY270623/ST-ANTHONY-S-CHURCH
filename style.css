@@ -566,7 +566,7 @@ a .fas.fa-cross,
 
 .ticker-content {
     white-space: nowrap;
-    animation: scroll 40s linear infinite; /* Increased from 20s to 40s to slow down */
+    animation: scroll 30s linear infinite;
     font-size: 1.1rem;
     font-weight: 500;
 }
@@ -721,7 +721,7 @@ a .fas.fa-cross,
 
 /* Give updates ticker its own animation settings to slow it down more */
 .updates-ticker .ticker-content {
-    animation: scroll 50s linear infinite; /* Even slower than home ticker */
+    animation: scroll 36s linear infinite;
 }
 
 /* Gallery */

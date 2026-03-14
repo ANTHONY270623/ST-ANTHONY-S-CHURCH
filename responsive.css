@@ -1471,3 +1471,71 @@ body {
         font-size: 16px;
     }
 }
+
+/* Final mobile overrides for stable navigation, ticker, and icon alignment */
+@media (max-width: 767px) {
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        z-index: 1200;
+    }
+
+    .nav-menu {
+        left: -100%;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-menu.active {
+        left: 0;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-link {
+        justify-content: center;
+    }
+
+    .nav-link i {
+        margin-right: 8px;
+    }
+
+    .home-ticker {
+        display: block !important;
+    }
+
+    .mobile-ticker {
+        display: none !important;
+    }
+
+    .home-ticker .ticker-content {
+        animation: scroll 22s linear infinite;
+    }
+
+    .updates-ticker .ticker-content {
+        animation: scroll 26s linear infinite;
+    }
+
+    .social-sidebar {
+        top: auto;
+        left: 50%;
+        bottom: 16px;
+        width: auto;
+        flex-direction: row;
+        justify-content: center;
+        transform: translateX(-50%);
+        gap: 10px;
+    }
+
+    .social-sidebar .sidebar-link,
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

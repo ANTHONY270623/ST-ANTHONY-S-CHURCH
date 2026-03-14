@@ -1,36 +1,49 @@
 /* Mobile viewport optimization */
 (function() {
     // Function to fix viewport issues in various mobile browsers
-    function fixViewport() {
+    function fixViewport(updateMeta = false) {
         // Handle 100vh in mobile browsers (especially iOS Safari)
-        let vh = window.innerHeight * 0.01;
+        const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-        
-        // Force redraw to address mobile rendering issues
-        document.body.style.display = 'none';
-        setTimeout(function() {
-            document.body.style.display = '';
-        }, 0);
-        
-        // Ensure proper scaling on orientation change
-        const width = window.innerWidth;
-        const meta = document.querySelector('meta[name="viewport"]');
-        
-        if (width < 375) {
-            // For very small screens, adjust content to fit
-            meta.setAttribute('content', 'width=375, initial-scale=' + (width / 375));
-        } else {
-            // Reset for larger screens
-            meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+
+        // Only touch viewport meta on initial load/orientation changes.
+        if (updateMeta) {
+            const width = window.innerWidth;
+            const meta = document.querySelector('meta[name="viewport"]');
+
+            if (!meta) return;
+
+            if (width < 375) {
+                meta.setAttribute('content', 'width=375, initial-scale=' + (width / 375));
+            } else {
+                meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            }
         }
     }
     
     // Run on load
-    window.addEventListener('load', fixViewport);
+    window.addEventListener('load', function() {
+        fixViewport(true);
+    });
     
     // Run on resize and orientation change
-    window.addEventListener('resize', fixViewport);
-    window.addEventListener('orientationchange', fixViewport);
+    let resizeRaf = null;
+    window.addEventListener('resize', function() {
+        if (resizeRaf) {
+            cancelAnimationFrame(resizeRaf);
+        }
+
+        resizeRaf = requestAnimationFrame(function() {
+            fixViewport(false);
+            resizeRaf = null;
+        });
+    });
+
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            fixViewport(true);
+        }, 100);
+    });
     
     // Add CSS variable for viewport height
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
