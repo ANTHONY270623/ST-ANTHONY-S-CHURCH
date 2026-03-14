@@ -193,6 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownLink.addEventListener('click', (e) => {
             if (window.innerWidth <= 767) {
                 e.preventDefault();
+                const targetId = dropdownLink.getAttribute('href');
+                const wasActive = dropdown.classList.contains('active');
                 
                 // Close all other dropdowns
                 dropdowns.forEach(otherDropdown => {
@@ -200,9 +202,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         otherDropdown.classList.remove('active');
                     }
                 });
-                
-                // Toggle this dropdown
-                dropdown.classList.toggle('active');
+
+                // First tap opens dropdown, second tap navigates to section
+                if (wasActive && targetId && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        if (hamburger) hamburger.classList.remove('active');
+                        if (navMenu) navMenu.classList.remove('active');
+                        dropdown.classList.remove('active');
+
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    dropdown.classList.add('active');
+                }
             } else {
                 // For desktop - prevent navigation when clicking the dropdown link
                 e.preventDefault();
