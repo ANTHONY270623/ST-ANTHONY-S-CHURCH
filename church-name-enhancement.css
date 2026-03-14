@@ -60,21 +60,21 @@
     color: #ffca28;
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive - Override to match desktop */
 @media (max-width: 767px) {
     .church-name-fixed {
-        top: 15%;
-        padding: 10px 20px;
-        z-index: 15;
+        top: 65%; /* Keep desktop positioning */
+        padding: 20px 40px; /* Keep desktop padding */
+        z-index: 10;
     }
     
     .church-name-fixed h1 {
-        font-size: 1.8rem;
-        margin-bottom: 5px;
+        font-size: 5rem; /* Keep desktop font size */
+        margin-bottom: 10px;
     }
     
     .church-name-fixed h2 {
-        font-size: 1.2rem;
+        font-size: 3rem; /* Keep desktop font size */
     }
 }
 

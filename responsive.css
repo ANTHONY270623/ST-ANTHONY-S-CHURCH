@@ -752,10 +752,10 @@ a, button {
         border-left: 2px solid var(--primary-color);
     }
     
-    /* Adjust hero section for mobile */
+    /* Adjust hero section for mobile - match desktop */
     .hero {
         height: 100vh;
-        padding-top: 70px;
+        padding-top: 0; /* Remove padding to match desktop */
     }
     
     .hero-content {
