@@ -679,6 +679,13 @@ a .fas.fa-cross,
     justify-content: center;
     color: #666;
     border: 3px solid var(--secondary-color);
+    overflow: hidden;
+}
+
+.priest-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Modal */
@@ -813,6 +820,12 @@ a .fas.fa-cross,
     color: #666;
     border: 3px solid var(--secondary-color);
     overflow: hidden;
+}
+
+.council-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .council-position {
