@@ -599,3 +599,68 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: var(--primary-color);
 }
+
+/* Final mobile fixes for Parish & Council cards */
+@media (max-width: 767px) {
+    #parish .priest-card,
+    #council .council-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: center !important;
+        overflow: visible !important;
+        padding: 1.25rem !important;
+    }
+
+    #parish .priest-image,
+    #council .council-image {
+        width: 150px !important;
+        height: 150px !important;
+        margin: 0 auto 1rem !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        display: block !important;
+        position: relative !important;
+        flex-shrink: 0 !important;
+    }
+
+    #parish .priest-image img,
+    #council .council-image img,
+    #parish .profile-image,
+    #council .profile-image {
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+
+    #parish .priest-card h3,
+    #council .council-card h4 {
+        display: block !important;
+        width: 100% !important;
+        margin: 0.4rem 0 0.25rem !important;
+        color: var(--text-color) !important;
+        line-height: 1.35 !important;
+        word-break: break-word !important;
+    }
+
+    #parish .priest-card p,
+    #parish .priest-card small,
+    #council .council-card p,
+    #council .council-card small {
+        display: block !important;
+        width: 100% !important;
+        margin: 0.15rem 0 !important;
+        color: var(--text-color) !important;
+        line-height: 1.35 !important;
+    }
+
+    #parish .priest-card:hover .profile-image,
+    #council .council-card:hover .profile-image {
+        transform: none !important;
+    }
+}
